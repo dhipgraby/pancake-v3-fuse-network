@@ -82,7 +82,29 @@ const config: HardhatUserConfig = {
     // mainnet: bscMainnet,
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY || '',
+    apiKey: {
+      eth: `${process.env.ETHERSCAN_API_KEY}`,
+      fuse: `${process.env.FUSESCAN_API_KEY}`,
+      spark: process.env.SPARKSCAN_API_KEY as string
+    },
+    customChains: [
+      {
+        network: "fuse",
+        chainId: 122,
+        urls: {
+          apiURL: "https://explorer.fuse.io/api",
+          browserURL: "https://explorer.fuse.io"
+        }
+      },
+      {
+        network: "spark",
+        chainId: 123,
+        urls: {
+          apiURL: "https://explorer.fusespark.io/api",
+          browserURL: "https://explorer.fusespark.io"
+        }
+      }
+    ]
   },
   solidity: {
     compilers: [

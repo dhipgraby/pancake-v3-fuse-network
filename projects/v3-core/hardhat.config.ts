@@ -103,7 +103,7 @@ export default {
     apiKey: {
       eth: `${process.env.ETHERSCAN_API_KEY}`,
       fuse: `${process.env.FUSESCAN_API_KEY}`,
-      spark:`${process.env.SPARKSCAN_API_KEY}`
+      spark: process.env.SPARKSCAN_API_KEY as string
     },
     customChains: [
       {
