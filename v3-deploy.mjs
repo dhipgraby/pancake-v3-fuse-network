@@ -6,6 +6,8 @@ const networks = {
   goerli: 'goerli',
   bscMainnet: 'bscMainnet',
   bscTestnet: 'bscTestnet',
+  spark: 'spark',
+  fuse: 'fuse',
   hardhat: 'hardhat',
 }
 

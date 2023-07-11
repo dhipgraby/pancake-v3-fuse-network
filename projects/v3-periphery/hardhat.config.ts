@@ -75,6 +75,18 @@ const eth: NetworkUserConfig = {
   accounts: [process.env.KEY_ETH!],
 }
 
+const spark: NetworkUserConfig = {
+  url: 'https://rpc.fusespark.io',
+  chainId: 123,
+  accounts: [process.env.KEY_SPARK!],
+}
+
+const fuse: NetworkUserConfig = {
+  url: 'https://rpc.fuse.io',
+  chainId: 122,
+  accounts: [process.env.KEY_FUSE!],
+}
+
 export default {
   networks: {
     hardhat: {
@@ -84,6 +96,8 @@ export default {
     ...(process.env.KEY_MAINNET && { bscMainnet }),
     ...(process.env.KEY_GOERLI && { goerli }),
     ...(process.env.KEY_ETH && { eth }),
+    ...(process.env.KEY_SPARK && { spark }),
+    ...(process.env.KEY_FUSE && { fuse }),
     // mainnet: bscMainnet,
   },
   etherscan: {

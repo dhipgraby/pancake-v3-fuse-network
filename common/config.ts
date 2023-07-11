@@ -35,6 +35,24 @@ export const configs = {
     cake: '0x8d008B313C1d6C7fE2982F62d32Da7507cF43551',
     smartRouterHelper: '0xdAecee3C08e953Bd5f89A5Cc90ac560413d709E3',
   },
+  spark: {
+    WNATIVE: '0xa7C12D4a86EF7DBfd818CDed9B3ae4985f1C3Ab9',
+    nativeCurrencyLabel: 'SPARK',
+    v2Factory: '',
+    stableFactory: '0x0000000000000000000000000000000000000000',
+    stableInfo: '0x0000000000000000000000000000000000000000',
+    cake: '0x739E7349f09351EAd1234aaaD263D86De6b3192D', //volt on spark testnet
+    smartRouterHelper: '0xdAecee3C08e953Bd5f89A5Cc90ac560413d709E3',
+  },
+  fuse: {
+    WNATIVE: '0x0BE9e53fd7EDaC9F859882AfdDa116645287C629',
+    nativeCurrencyLabel: 'FUSE',
+    v2Factory: '',
+    stableFactory: '0x0000000000000000000000000000000000000000',
+    stableInfo: '0x0000000000000000000000000000000000000000',
+    cake: '',
+    smartRouterHelper: '0xdAecee3C08e953Bd5f89A5Cc90ac560413d709E3',
+  },
   hardhat: {
     WNATIVE: '0x0000000000000000000000000000000000000000',
     nativeCurrencyLabel: 'BNB',
