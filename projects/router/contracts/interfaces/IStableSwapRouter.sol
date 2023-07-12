@@ -3,7 +3,7 @@ pragma solidity =0.7.6;
 pragma abicoder v2;
 
 /// @title Router token swapping functionality
-/// @notice Functions for swapping tokens via Pancake Stable Swap
+/// @notice Functions for swapping tokens via Voltage Stable Swap
 interface IStableSwapRouter {
     /** 
      * @param flag token amount in a stable swap pool. 2 for 2pool, 3 for 3pool    

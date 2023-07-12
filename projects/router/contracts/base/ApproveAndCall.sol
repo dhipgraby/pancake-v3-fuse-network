@@ -3,13 +3,13 @@ pragma solidity =0.7.6;
 pragma abicoder v2;
 
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
-import '@pancakeswap/v3-periphery/contracts/interfaces/INonfungiblePositionManager.sol';
+import '@voltageswap/v3-periphery/contracts/interfaces/INonfungiblePositionManager.sol';
 
 import '../interfaces/IApproveAndCall.sol';
 import './ImmutableState.sol';
 
 /// @title Approve and Call
-/// @notice Allows callers to approve the PancakeSwap V3 position manager from this contract,
+/// @notice Allows callers to approve the voltageSwap V3 position manager from this contract,
 /// for any token, and then make calls into the position manager
 abstract contract ApproveAndCall is IApproveAndCall, ImmutableState {
     function tryApprove(address token, uint256 amount) private returns (bool) {

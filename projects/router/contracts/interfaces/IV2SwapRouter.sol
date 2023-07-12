@@ -3,7 +3,7 @@ pragma solidity >=0.7.5;
 pragma abicoder v2;
 
 /// @title Router token swapping functionality
-/// @notice Functions for swapping tokens via PancakeSwap V2
+/// @notice Functions for swapping tokens via VoltageSwap V2
 interface IV2SwapRouter {
     /// @notice Swaps `amountIn` of one token for as much as possible of another token
     /// @dev Setting `amountIn` to 0 will cause the contract to look up its own balance,

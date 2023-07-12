@@ -2,8 +2,8 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '@pancakeswap/v3-periphery/contracts/base/SelfPermit.sol';
-import '@pancakeswap/v3-periphery/contracts/base/PeripheryImmutableState.sol';
+import '@voltageswap/v3-periphery/contracts/base/SelfPermit.sol';
+import '@voltageswap/v3-periphery/contracts/base/PeripheryImmutableState.sol';
 
 import './interfaces/ISmartRouter.sol';
 import './V2SwapRouter.sol';
@@ -12,7 +12,7 @@ import './StableSwapRouter.sol';
 import './base/ApproveAndCall.sol';
 import './base/MulticallExtended.sol';
 
-/// @title Pancake Smart Router
+/// @title Voltage Smart Router
 contract SmartRouter is ISmartRouter, V2SwapRouter, V3SwapRouter, StableSwapRouter, ApproveAndCall, MulticallExtended, SelfPermit {
     constructor(
         address _factoryV2,
