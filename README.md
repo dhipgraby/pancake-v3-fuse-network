@@ -27,8 +27,8 @@ To get started with this custom fork of **PancakeSwap V3 Contracts**, you can fo
 2. bscTestnet `KEY_TESTNET` or bsc `KEY_MAINNET`
 3. add `ETHERSCAN_API_KEY` in `.env` file. It's an API key for etherscan.
 4. `yarn` in root directory
-5. `NETWORK=$NETWORK yarn zx v3-deploy.mjs` where `$NETWORK` is either `eth`, `goerli`, `bscMainnet`, `bscTestnet` or `hardhat` (for local testing)
-6. `NETWORK=$NETWORK yarn zx v3-verify.mjs` where `$NETWORK` is either `eth`, `goerli`, `bscMainnet`, `bscTestnet` or `hardhat` (for local testing)
+5. `NETWORK=$NETWORK yarn zx v3-deploy.mjs` where `$NETWORK` is either `eth`, `goerli`, `bscMainnet`, `bscTestnet`, `sparkTestnet`, `fuseMainnet` or `hardhat` (for local testing)
+6. `NETWORK=$NETWORK yarn zx v3-verify.mjs` where `$NETWORK` is either `eth`, `goerli`, `bscMainnet`, `bscTestnet`, `sparkTestnet`, `fuseMainnet` or `hardhat` (for local testing)
 
 ## Usage and Examples
 
