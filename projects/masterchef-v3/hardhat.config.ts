@@ -4,6 +4,7 @@ import type { HardhatUserConfig, NetworkUserConfig } from "hardhat/types";
 import "@nomiclabs/hardhat-ethers";
 import "@nomiclabs/hardhat-etherscan";
 import "@nomiclabs/hardhat-waffle";
+import "@nomicfoundation/hardhat-verify";
 import "@openzeppelin/hardhat-upgrades";
 import "@typechain/hardhat";
 import "hardhat-abi-exporter";
@@ -59,25 +60,25 @@ const config = {
     ...(process.env.KEY_GOERLI && { goerli }),
     ...(process.env.KEY_ETH && { eth }),
     ...(process.env.KEY_SPARK && { spark }),
-    ...(process.env.KEY_FUSE && { fuse }),
+    // ...(process.env.KEY_FUSE && { fuse }),
     // testnet: bscTestnet,
     // mainnet: bscMainnet,
   },
   etherscan: {
     apiKey: {
       eth: `${process.env.ETHERSCAN_API_KEY}`,
-      fuse: `${process.env.FUSESCAN_API_KEY}`,
+      // fuse: `${process.env.FUSESCAN_API_KEY}`,
       spark: process.env.SPARKSCAN_API_KEY as string
     },
     customChains: [
-      {
+      /* {
         network: "fuse",
         chainId: 122,
         urls: {
           apiURL: "https://explorer.fuse.io/api",
           browserURL: "https://explorer.fuse.io"
         }
-      },
+      }, */
       {
         network: "spark",
         chainId: 123,

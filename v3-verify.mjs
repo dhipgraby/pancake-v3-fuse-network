@@ -8,6 +8,7 @@ const networks = {
   bscTestnet: 'bscTestnet',
   hardhat: 'hardhat',
   spark: 'spark',
+  fuse: 'fuse'
 }
 
 let network = process.env.NETWORK

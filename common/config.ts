@@ -36,7 +36,7 @@ export const configs = {
     smartRouterHelper: '0xdAecee3C08e953Bd5f89A5Cc90ac560413d709E3',
   },
   spark: {
-    WNATIVE: '0xa7C12D4a86EF7DBfd818CDed9B3ae4985f1C3Ab9',
+    WNATIVE: '0xa7C12D4a86EF7DBfd818CDed9B3ae4985f1C3Ab9', //WFUSE
     nativeCurrencyLabel: 'SPARK',
     v2Factory: '0x0000000000000000000000000000000000000000',
     stableFactory: '0x0000000000000000000000000000000000000000',
