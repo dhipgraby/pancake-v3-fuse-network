@@ -2,8 +2,8 @@ import bn from "bignumber.js";
 import { BigNumber, Contract } from "ethers";
 import { ethers, waffle, run } from "hardhat";
 
-const pancakeV3PoolDeployer = '0xB0edb49557c583290368e04FffaBb293FC224Ae1';
-const pancakeV3Factory = '0xC200B8E8eE9A4BFd22a2F31a3a64e581A3c9e793';
+const voltageV3PoolDeployer = '0xB0edb49557c583290368e04FffaBb293FC224Ae1';
+const voltageV3Factory = '0xC200B8E8eE9A4BFd22a2F31a3a64e581A3c9e793';
 const swapRouter = '0xCbBEc95002838Aa770ED13889d52E911a13d55d1';
 const nftDescriptor = '0xcF7C39A23F4Aaba3ab182f88c10E025693569871';
 const nftDescriptorEx = '0x3a20994A97faD01D0BeB15655db23293608c1d60';
@@ -30,8 +30,8 @@ async function main() {
     address: swapRouter,
     contract: 'contracts/SwapRouter.sol:SwapRouter',
     constructorArguments: [
-      pancakeV3PoolDeployer,
-      pancakeV3Factory,
+      voltageV3PoolDeployer,
+      voltageV3Factory,
       '0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd', //WBNB
     ],
   });
@@ -62,8 +62,8 @@ async function main() {
     address: nonfungiblePositionManager,
     contract: 'contracts/NonfungiblePositionManager.sol:NonfungiblePositionManager',
     constructorArguments: [
-      pancakeV3PoolDeployer,
-      pancakeV3Factory,
+      voltageV3PoolDeployer,
+      voltageV3Factory,
       "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd", // WBNB
       nonfungibleTokenPositionDescriptor,
     ],

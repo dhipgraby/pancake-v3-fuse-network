@@ -1,14 +1,14 @@
 {
   "name": "@pancakeswap/masterchef-v3",
   "version": "1.0.0",
-  "description": "Pancake MasterChef V3",
+  "description": "Voltage MasterChef V3",
   "publishConfig": {
     "access": "public"
   },
-  "author": "PancakeSwap",
+  "author": "VoltageSwap",
   "license": "MIT",
   "keywords": [
-    "pancakeswap",
+    "voltageswap",
     "masterchef",
     "v3"
   ],

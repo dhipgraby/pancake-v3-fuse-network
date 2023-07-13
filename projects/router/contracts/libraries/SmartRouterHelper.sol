@@ -5,8 +5,8 @@ pragma abicoder v2;
 import '../interfaces/IStableSwapFactory.sol';
 import '../interfaces/IStableSwapInfo.sol';
 import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
-import '@voltageswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
-import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+import '@pancakeswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
+import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
 
 library SmartRouterHelper {
     using LowGasSafeMath for uint256;

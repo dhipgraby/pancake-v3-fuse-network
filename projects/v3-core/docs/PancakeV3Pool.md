@@ -1,6 +1,6 @@
 # Solidity API
 
-## PancakeV3Pool
+## VoltageV3Pool
 
 ### factory
 
@@ -8,7 +8,7 @@
 address factory
 ```
 
-The contract that deployed the pool, which must adhere to the IPancakeV3Factory interface
+The contract that deployed the pool, which must adhere to the IVoltageV3Factory interface
 
 #### Return Values
 
@@ -116,7 +116,7 @@ struct Slot0 {
 ### slot0
 
 ```solidity
-struct PancakeV3Pool.Slot0 slot0
+struct VoltageV3Pool.Slot0 slot0
 ```
 
 The 0th storage slot in the pool stores many values, and is exposed as a single method to save gas
@@ -159,7 +159,7 @@ struct ProtocolFees {
 ### protocolFees
 
 ```solidity
-struct PancakeV3Pool.ProtocolFees protocolFees
+struct VoltageV3Pool.ProtocolFees protocolFees
 ```
 
 The amounts of token0 and token1 that are owed to the protocol
@@ -244,7 +244,7 @@ ago, rather than at a specific index in the array._
 ### lmPool
 
 ```solidity
-contract IPancakeV3LmPool lmPool
+contract IVoltageV3LmPool lmPool
 ```
 
 ### SetLmPoolEvent
@@ -269,7 +269,7 @@ we use balance checks to determine the payment status of interactions such as mi
 modifier onlyFactoryOwner()
 ```
 
-_Prevents calling a function from anyone except the address returned by IPancakeV3Factory#owner()_
+_Prevents calling a function from anyone except the address returned by IVoltageV3Factory#owner()_
 
 ### constructor
 
@@ -514,7 +514,7 @@ function swap(address recipient, bool zeroForOne, int256 amountSpecified, uint16
 
 Swap token0 for token1, or token1 for token0
 
-_The caller of this method receives a callback in the form of IPancakeV3SwapCallback#pancakeV3SwapCallback_
+_The caller of this method receives a callback in the form of IVoltageV3SwapCallback#voltageV3SwapCallback_
 
 #### Parameters
 
@@ -541,7 +541,7 @@ function flash(address recipient, uint256 amount0, uint256 amount1, bytes data) 
 
 Receive token0 and/or token1 and pay it back, plus a fee, in the callback
 
-_The caller of this method receives a callback in the form of IPancakeV3FlashCallback#pancakeV3FlashCallback
+_The caller of this method receives a callback in the form of IVoltageV3FlashCallback#voltageV3FlashCallback
 Can be used to donate underlying tokens pro-rata to currently in-range liquidity providers by calling
 with 0 amount{0,1} and sending the donation amount(s) from the callback_
 
@@ -595,6 +595,6 @@ Collect the protocol fee accrued to the pool
 ### setLmPool
 
 ```solidity
-function setLmPool(contract IPancakeV3LmPool _lmPool) external
+function setLmPool(contract IVoltageV3LmPool _lmPool) external
 ```
 

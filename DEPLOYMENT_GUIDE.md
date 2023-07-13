@@ -2,17 +2,17 @@
 
 ## Deployment Guide
 
-The following guide outlines the step-by-step process for deploying the core, peripheral, and MasterChef V3 contracts in PancakeSwap V3.
+The following guide outlines the step-by-step process for deploying the core, peripheral, and MasterChef V3 contracts in VoltageSwap V3.
 
 | Step | Contract              | Description                                                     |
 | ---- | --------------------- | --------------------------------------------------------------- |
-| 1    | Core Contracts        | Deploy the core contracts that form the foundation of PancakeSwap V3. This includes the liquidity pools, swaps, and essential functionalities. |
-| 2    | Peripheral Contracts  | Deploy any peripheral contracts that enhance PancakeSwap V3, such as advanced order types, governance mechanisms, or flash swap capabilities. |
+| 1    | Core Contracts        | Deploy the core contracts that form the foundation of VoltageSwap V3. This includes the liquidity pools, swaps, and essential functionalities. |
+| 2    | Peripheral Contracts  | Deploy any peripheral contracts that enhance VoltageSwap V3, such as advanced order types, governance mechanisms, or flash swap capabilities. |
 | 3    | MasterChef V3         | Deploy the MasterChef V3 contract to manage the distribution of rewards to liquidity providers. This contract will interact with the core contracts to calculate and distribute rewards. |
 
 ### Step 1: Deploy Core Contracts
 
-#### Description: Deploy the core contracts that form the foundation of PancakeSwap V3
+#### Description: Deploy the core contracts that form the foundation of VoltageSwap V3
 
 **Instructions:**
 
@@ -22,7 +22,7 @@ The following guide outlines the step-by-step process for deploying the core, pe
 
 ### Step 2: Deploy Peripheral Contracts
 
-#### Description: Deploy any peripheral contracts to enhance PancakeSwap V3 functionalities
+#### Description: Deploy any peripheral contracts to enhance VoltageSwap V3 functionalities
 
 **Instructions:**
 

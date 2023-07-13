@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "PancakeV3PoolDeployer",
-  "sourceName": "contracts/PancakeV3PoolDeployer.sol",
+  "contractName": "VoltageV3PoolDeployer",
+  "sourceName": "contracts/VoltageV3PoolDeployer.sol",
   "abi": [
     {
       "inputs": [

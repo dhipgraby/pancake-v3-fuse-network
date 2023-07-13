@@ -1,14 +1,14 @@
-# Report: Forking PancakeSwap V3 Contracts into Voltage Finance
+# Report: Forking VoltageSwap V3 Contracts into Voltage Finance
 
-This report outlines the roadmap for integrating the functionality of **PancakeSwap V3** contracts into the **Voltage Finance** application on the **FUSE** network. The roadmap is based on the assumption that there is **one blockchain developer** working on the project.  
+This report outlines the roadmap for integrating the functionality of **VoltageSwap V3** contracts into the **Voltage Finance** application on the **FUSE** network. The roadmap is based on the assumption that there is **one blockchain developer** working on the project.  
 
 ## Step 1: Repository Forking (Estimated Time: 1-2 Days)
 
-The initial step involves creating a copy of the **PancakeSwap V3** contracts repository on **GitHub**. This is a **DevOps** task and should take a developer **1-2 days**.
+The initial step involves creating a copy of the **VoltageSwap V3** contracts repository on **GitHub**. This is a **DevOps** task and should take a developer **1-2 days**.
 
 ## Step 2: Contract Adaptation (Estimated Time: 2-3 Weeks)
 
-This task involves adapting the **PancakeSwap V3** contracts to work on the **FUSE** network. This is a complex task that requires a deep understanding of both the BSC and FUSE networks, and we estimate it will take a developer **2-3 weeks** to complete.
+This task involves adapting the **VoltageSwap V3** contracts to work on the **FUSE** network. This is a complex task that requires a deep understanding of both the BSC and FUSE networks, and we estimate it will take a developer **2-3 weeks** to complete.
 
 The following table provides an overview of the different contracts that can be forked:
 
@@ -20,17 +20,17 @@ The following table provides an overview of the different contracts that can be 
 | **MixedRouteQuoterV1** | _Quotes prices for trades involving multiple routes._ |
 | **QuoterV2** | _An upgraded version of the Quoter contract, providing prices for trades._ |
 | **TokenValidator** | _Validates tokens, checking if a token meets certain criteria before it can be used._ |
-| **PancakeV3Factory** | _Creates new PancakeSwap pairs._ |
-| **PancakeV3PoolDeployer** | _Deploys new PancakeSwap pools._ |
-| **SwapRouter** | _Executes trades on PancakeSwap._ |
+| **VoltageV3Factory** | _Creates new VoltageSwap pairs._ |
+| **VoltageV3PoolDeployer** | _Deploys new VoltageSwap pools._ |
+| **SwapRouter** | _Executes trades on VoltageSwap._ |
 | **V3Migrator** | _Migrates liquidity from V2 to V3._ |
 | **TickLens** | _Provides a view function to return information about multiple ticks from a pool._ |
 | **NonfungibleTokenPositionDescriptor** | _Generates a URI for a given token position._ |
-| **NonfungiblePositionManager** | _Simplifies the complexity associated with managing positions in PancakeSwap V3._ |
-| **PancakeInterfaceMulticall** | _Makes multiple calls to the PancakeSwap interface in a single transaction._ |
-| **PancakeV3LmPoolDeployer** | _Deploys new liquidity mining pools for PancakeSwap V3._ |
+| **NonfungiblePositionManager** | _Simplifies the complexity associated with managing positions in VoltageSwap V3._ |
+| **VoltageInterfaceMulticall** | _Makes multiple calls to the VoltageSwap interface in a single transaction._ |
+| **VoltageV3LmPoolDeployer** | _Deploys new liquidity mining pools for VoltageSwap V3._ |
 
-The scope of this step depends on the features **Voltage Finance** wants to fork. If a true copy of PancakeSwap is desired, all contracts would need to be adapted. However, if only certain features are required, such as the **V3-swap** and the **v3-farming** from Uniswap V3 contracts and SushiSwap's MasterChef contracts, then only those specific contracts would need to be adapted.
+The scope of this step depends on the features **Voltage Finance** wants to fork. If a true copy of VoltageSwap is desired, all contracts would need to be adapted. However, if only certain features are required, such as the **V3-swap** and the **v3-farming** from Uniswap V3 contracts and SushiSwap's MasterChef contracts, then only those specific contracts would need to be adapted.
 
 ## Step 3: Contract Integration (Estimated Time: 3-4 Weeks)
 
@@ -76,4 +76,4 @@ Examples of tasks involved in this step include:
   
 ## Conclusion
 
-_This roadmap provides a structured approach for **Voltage Finance** to successfully incorporate the desired features of **PancakeSwap V3** into its application. By doing so, it can enhance its product offerings and potentially broaden its user base. It's crucial to understand that this roadmap serves as a guide, and adjustments may be required based on **Voltage Finance's** specific needs and circumstances. The integration process is flexible and should be tailored to meet the unique requirements of **Voltage Finance**._  
+_This roadmap provides a structured approach for **Voltage Finance** to successfully incorporate the desired features of **VoltageSwap V3** into its application. By doing so, it can enhance its product offerings and potentially broaden its user base. It's crucial to understand that this roadmap serves as a guide, and adjustments may be required based on **Voltage Finance's** specific needs and circumstances. The integration process is flexible and should be tailored to meet the unique requirements of **Voltage Finance**._  

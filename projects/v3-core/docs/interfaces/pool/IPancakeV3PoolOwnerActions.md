@@ -1,6 +1,6 @@
 # Solidity API
 
-## IPancakeV3PoolOwnerActions
+## IVoltageV3PoolOwnerActions
 
 Contains pool methods that may only be called by the factory owner
 

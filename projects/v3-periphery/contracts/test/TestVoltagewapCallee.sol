@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity =0.7.6;
 
-import '@pancakeswap/v3-core/contracts/interfaces/callback/IPancakeV3SwapCallback.sol';
+import '@pancakeswap/v3-core/contracts/interfaces/callback/IVoltageV3SwapCallback.sol';
 import '@pancakeswap/v3-core/contracts/libraries/SafeCast.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/IPancakeV3Pool.sol';
+import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 
-contract TestPancakeswapCallee is IPancakeV3SwapCallback {
+contract TestVoltageswapCallee is IVoltageV3SwapCallback {
     using SafeCast for uint256;
 
     function swapExact0For1(
@@ -15,7 +15,7 @@ contract TestPancakeswapCallee is IPancakeV3SwapCallback {
         address recipient,
         uint160 sqrtPriceLimitX96
     ) external {
-        IPancakeV3Pool(pool).swap(recipient, true, amount0In.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
+        IVoltageV3Pool(pool).swap(recipient, true, amount0In.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
     }
 
     function swap0ForExact1(
@@ -24,7 +24,7 @@ contract TestPancakeswapCallee is IPancakeV3SwapCallback {
         address recipient,
         uint160 sqrtPriceLimitX96
     ) external {
-        IPancakeV3Pool(pool).swap(recipient, true, -amount1Out.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
+        IVoltageV3Pool(pool).swap(recipient, true, -amount1Out.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
     }
 
     function swapExact1For0(
@@ -33,7 +33,7 @@ contract TestPancakeswapCallee is IPancakeV3SwapCallback {
         address recipient,
         uint160 sqrtPriceLimitX96
     ) external {
-        IPancakeV3Pool(pool).swap(recipient, false, amount1In.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
+        IVoltageV3Pool(pool).swap(recipient, false, amount1In.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
     }
 
     function swap1ForExact0(
@@ -42,10 +42,10 @@ contract TestPancakeswapCallee is IPancakeV3SwapCallback {
         address recipient,
         uint160 sqrtPriceLimitX96
     ) external {
-        IPancakeV3Pool(pool).swap(recipient, false, -amount0Out.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
+        IVoltageV3Pool(pool).swap(recipient, false, -amount0Out.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
     }
 
-    function pancakeV3SwapCallback(
+    function VoltageV3SwapCallback(
         int256 amount0Delta,
         int256 amount1Delta,
         bytes calldata data
@@ -53,10 +53,10 @@ contract TestPancakeswapCallee is IPancakeV3SwapCallback {
         address sender = abi.decode(data, (address));
 
         if (amount0Delta > 0) {
-            IERC20(IPancakeV3Pool(msg.sender).token0()).transferFrom(sender, msg.sender, uint256(amount0Delta));
+            IERC20(IVoltageV3Pool(msg.sender).token0()).transferFrom(sender, msg.sender, uint256(amount0Delta));
         } else {
             assert(amount1Delta > 0);
-            IERC20(IPancakeV3Pool(msg.sender).token1()).transferFrom(sender, msg.sender, uint256(amount1Delta));
+            IERC20(IVoltageV3Pool(msg.sender).token1()).transferFrom(sender, msg.sender, uint256(amount1Delta));
         }
     }
 }

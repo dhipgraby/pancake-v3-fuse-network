@@ -5,7 +5,7 @@
 ### countInitializedTicksCrossed
 
 ```solidity
-function countInitializedTicksCrossed(contract IPancakeV3Pool self, int24 tickBefore, int24 tickAfter) internal view returns (uint32 initializedTicksCrossed)
+function countInitializedTicksCrossed(contract IVoltageV3Pool self, int24 tickBefore, int24 tickAfter) internal view returns (uint32 initializedTicksCrossed)
 ```
 
 _This function counts the number of initialized ticks that would incur a gas cost between tickBefore and tickAfter.

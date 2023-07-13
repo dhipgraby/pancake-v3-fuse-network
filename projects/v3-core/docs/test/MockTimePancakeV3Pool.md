@@ -1,6 +1,6 @@
 # Solidity API
 
-## MockTimePancakeV3Pool
+## MockTimeVoltageV3Pool
 
 ### time
 

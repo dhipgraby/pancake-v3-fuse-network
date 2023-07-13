@@ -10,7 +10,7 @@ Provides functions to integrate with V3 pool oracle
 function consult(address pool, uint32 secondsAgo) internal view returns (int24 arithmeticMeanTick, uint128 harmonicMeanLiquidity)
 ```
 
-Calculates time-weighted means of tick and liquidity for a given PancakeSwap V3 pool
+Calculates time-weighted means of tick and liquidity for a given VoltageSwap V3 pool
 
 #### Parameters
 
@@ -61,7 +61,7 @@ Given a pool, it returns the number of seconds ago of the oldest stored observat
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| pool | address | Address of PancakeSwap V3 pool that we want to observe |
+| pool | address | Address of VoltageSwap V3 pool that we want to observe |
 
 #### Return Values
 
@@ -81,7 +81,7 @@ Given a pool, it returns the tick value as of the start of the current block
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| pool | address | Address of PancakeSwap V3 pool |
+| pool | address | Address of VoltageSwap V3 pool |
 
 #### Return Values
 

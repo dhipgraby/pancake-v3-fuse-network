@@ -5,7 +5,7 @@
 ### getBlockStartingAndCurrentTick
 
 ```solidity
-function getBlockStartingAndCurrentTick(contract IPancakeV3Pool pool) internal view returns (int24 blockStartingTick, int24 currentTick)
+function getBlockStartingAndCurrentTick(contract IVoltageV3Pool pool) internal view returns (int24 blockStartingTick, int24 currentTick)
 ```
 
 _Returns the tick as of the beginning of the current block, and as of right now, for the given pool._
@@ -13,7 +13,7 @@ _Returns the tick as of the beginning of the current block, and as of right now,
 ### getPoolAddress
 
 ```solidity
-function getPoolAddress(address tokenA, address tokenB, uint24 fee) internal view virtual returns (contract IPancakeV3Pool pool)
+function getPoolAddress(address tokenA, address tokenB, uint24 fee) internal view virtual returns (contract IVoltageV3Pool pool)
 ```
 
 _Virtual function to get pool addresses that can be overridden in tests._

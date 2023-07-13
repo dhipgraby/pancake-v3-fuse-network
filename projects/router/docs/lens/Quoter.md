@@ -13,16 +13,16 @@ the swap and check the amounts in the callback._
 constructor(address _deployer, address _factory, address _WETH9) public
 ```
 
-### pancakeV3SwapCallback
+### voltageV3SwapCallback
 
 ```solidity
-function pancakeV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes path) external view
+function voltageV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes path) external view
 ```
 
-Called to `msg.sender` after executing a swap via IPancakeV3Pool#swap.
+Called to `msg.sender` after executing a swap via IVoltageV3Pool#swap.
 
 _In the implementation you must pay the pool tokens owed for the swap.
-The caller of this method must be checked to be a PancakeV3Pool deployed by the canonical PancakeV3Factory.
+The caller of this method must be checked to be a VoltageV3Pool deployed by the canonical VoltageV3Factory.
 amount0Delta and amount1Delta can both be 0 if no tokens were swapped._
 
 #### Parameters

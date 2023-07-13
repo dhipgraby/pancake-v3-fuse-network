@@ -1,6 +1,6 @@
 # Solidity API
 
-## IPancakeV3PoolDerivedState
+## IVoltageV3PoolDerivedState
 
 Contains view functions to provide information about the pool that is computed rather than stored on the
 blockchain. The functions here may have variable gas costs.

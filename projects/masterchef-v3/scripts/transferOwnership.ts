@@ -80,7 +80,7 @@ const abi = [
   },
   {
     inputs: [],
-    name: "NotPancakeNFT",
+    name: "NotVoltageNFT",
     type: "error",
   },
   {
@@ -110,7 +110,7 @@ const abi = [
       },
       {
         indexed: true,
-        internalType: "contract IPancakeV3Pool",
+        internalType: "contract IVoltageV3Pool",
         name: "v3Pool",
         type: "address",
       },
@@ -593,7 +593,7 @@ const abi = [
         type: "uint256",
       },
       {
-        internalType: "contract IPancakeV3Pool",
+        internalType: "contract IVoltageV3Pool",
         name: "_v3Pool",
         type: "address",
       },
@@ -1056,7 +1056,7 @@ const abi = [
         type: "uint256",
       },
       {
-        internalType: "contract IPancakeV3Pool",
+        internalType: "contract IVoltageV3Pool",
         name: "v3Pool",
         type: "address",
       },

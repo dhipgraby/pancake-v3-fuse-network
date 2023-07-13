@@ -1,21 +1,21 @@
 # Solidity API
 
-## IPancakeV3PoolWithLmPool
+## IVoltageV3PoolWithLmPool
 
 ### setLmPool
 
 ```solidity
-function setLmPool(contract IPancakeV3LmPool lmPool) external
+function setLmPool(contract IVoltageV3LmPool lmPool) external
 ```
 
-## PancakeV3FactoryOwner
+## VoltageV3FactoryOwner
 
 Manages ownership and control over factory and pools
 
 ### factory
 
 ```solidity
-contract IPancakeV3Factory factory
+contract IVoltageV3Factory factory
 ```
 
 ### owner
@@ -68,7 +68,7 @@ modifier onlyOwnerOrLmPoolDeployer()
 ### constructor
 
 ```solidity
-constructor(contract IPancakeV3Factory _factory) public
+constructor(contract IVoltageV3Factory _factory) public
 ```
 
 ### setOwner
@@ -98,13 +98,13 @@ function enableFeeAmount(uint24 fee, int24 tickSpacing) external
 ### setFeeProtocol
 
 ```solidity
-function setFeeProtocol(contract IPancakeV3Pool pool, uint8 feeProtocol0, uint8 feeProtocol1) external
+function setFeeProtocol(contract IVoltageV3Pool pool, uint8 feeProtocol0, uint8 feeProtocol1) external
 ```
 
 ### collectProtocol
 
 ```solidity
-function collectProtocol(contract IPancakeV3Pool pool, address recipient, uint128 amount0Requested, uint128 amount1Requested) external returns (uint128 amount0, uint128 amount1)
+function collectProtocol(contract IVoltageV3Pool pool, address recipient, uint128 amount0Requested, uint128 amount1Requested) external returns (uint128 amount0, uint128 amount1)
 ```
 
 ### setLmPool

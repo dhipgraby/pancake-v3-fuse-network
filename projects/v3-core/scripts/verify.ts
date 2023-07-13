@@ -5,14 +5,14 @@ async function main() {
   const networkName = network.name
   const deployedContracts = await import(`@pancakeswap/v3-core/deployments/${networkName}.json`)
 
-  // Verify PancakeV3PoolDeployer
-  console.log('Verify PancakeV3PoolDeployer')
-  await verifyContract(deployedContracts.PancakeV3PoolDeployer)
+  // Verify VoltageV3PoolDeployer
+  console.log('Verify VoltageV3PoolDeployer')
+  await verifyContract(deployedContracts.VoltageV3PoolDeployer)
   await sleep(10000)
 
-  // Verify pancakeV3Factory
-  console.log('Verify pancakeV3Factory')
-  await verifyContract(deployedContracts.PancakeV3Factory, [deployedContracts.PancakeV3PoolDeployer])
+  // Verify voltageV3Factory
+  console.log('Verify voltageV3Factory')
+  await verifyContract(deployedContracts.VoltageV3Factory, [deployedContracts.VoltageV3PoolDeployer])
   await sleep(10000)
 }
 

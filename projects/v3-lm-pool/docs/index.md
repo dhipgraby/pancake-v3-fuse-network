@@ -8,7 +8,7 @@
 function getLatestPeriodInfo(address _v3Pool) external view returns (uint256 cakePerSecond, uint256 endTime)
 ```
 
-## PancakeV3LmPool
+## VoltageV3LmPool
 
 ### REWARD_PRECISION
 
@@ -19,7 +19,7 @@ uint256 REWARD_PRECISION
 ### pool
 
 ```solidity
-contract IPancakeV3Pool pool
+contract IVoltageV3Pool pool
 ```
 
 ### masterChef
@@ -100,7 +100,7 @@ function updatePosition(int24 tickLower, int24 tickUpper, int128 liquidityDelta)
 function getRewardGrowthInside(int24 tickLower, int24 tickUpper) external view returns (uint256 rewardGrowthInsideX128)
 ```
 
-## IPancakeV3FactoryOwner
+## IVoltageV3FactoryOwner
 
 ### setLmPool
 
@@ -108,7 +108,7 @@ function getRewardGrowthInside(int24 tickLower, int24 tickUpper) external view r
 function setLmPool(address pool, address lmPool) external
 ```
 
-## PancakeV3LmPoolDeployer
+## VoltageV3LmPoolDeployer
 
 _This contract is for Master Chef to create a corresponding LmPool when
 adding a new farming pool. As for why not just create LmPool inside the
@@ -124,7 +124,7 @@ address masterChef
 ### factoryOwner
 
 ```solidity
-contract IPancakeV3FactoryOwner factoryOwner
+contract IVoltageV3FactoryOwner factoryOwner
 ```
 
 ### onlyMasterChef
@@ -136,13 +136,13 @@ modifier onlyMasterChef()
 ### constructor
 
 ```solidity
-constructor(address _masterChef, contract IPancakeV3FactoryOwner _factoryOwner) public
+constructor(address _masterChef, contract IVoltageV3FactoryOwner _factoryOwner) public
 ```
 
 ### deploy
 
 ```solidity
-function deploy(contract IPancakeV3Pool pool) external returns (contract IPancakeV3LmPool lmPool)
+function deploy(contract IVoltageV3Pool pool) external returns (contract IVoltageV3LmPool lmPool)
 ```
 
 _Deploys a LmPool_
@@ -151,9 +151,9 @@ _Deploys a LmPool_
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| pool | contract IPancakeV3Pool | The contract address of the PancakeSwap V3 pool |
+| pool | contract IVoltageV3Pool | The contract address of the VoltageSwap V3 pool |
 
-## IPancakeV3LmPool
+## IVoltageV3LmPool
 
 ### accumulateReward
 
