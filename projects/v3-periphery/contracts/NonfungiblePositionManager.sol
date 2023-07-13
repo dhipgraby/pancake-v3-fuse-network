@@ -2,9 +2,15 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
+<<<<<<< HEAD
 import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
 import '@pancakeswap/v3-core/contracts/libraries/FixedPoint128.sol';
 import '@pancakeswap/v3-core/contracts/libraries/FullMath.sol';
+=======
+import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+import '@voltageswap/v3-core/contracts/libraries/FixedPoint128.sol';
+import '@voltageswap/v3-core/contracts/libraries/FullMath.sol';
+>>>>>>> upstream/testing_voltage
 
 import './interfaces/INonfungiblePositionManager.sol';
 import './interfaces/INonfungibleTokenPositionDescriptor.sol';

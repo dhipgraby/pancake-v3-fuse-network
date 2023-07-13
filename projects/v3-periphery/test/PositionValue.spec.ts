@@ -20,7 +20,11 @@ import snapshotGasCost from './shared/snapshotGasCost'
 
 import { expect } from './shared/expect'
 
+<<<<<<< HEAD
 import { abi as IVoltageV3PoolABI } from '@pancakeswap/v3-core/artifacts/contracts/interfaces/IVoltageV3Pool.sol/IVoltageV3Pool.json'
+=======
+import { abi as IVoltageV3PoolABI } from '@voltageswap/v3-core/artifacts/contracts/interfaces/IVoltageV3Pool.sol/IVoltageV3Pool.json'
+>>>>>>> upstream/testing_voltage
 
 describe('PositionValue', async () => {
   const [...wallets] = waffle.provider.getWallets()

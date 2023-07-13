@@ -1,10 +1,17 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity >=0.6.8 <0.8.0;
 
+<<<<<<< HEAD
 import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
 import '@pancakeswap/v3-core/contracts/libraries/FixedPoint128.sol';
 import '@pancakeswap/v3-core/contracts/libraries/TickMath.sol';
 import '@pancakeswap/v3-core/contracts/libraries/Tick.sol';
+=======
+import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+import '@voltageswap/v3-core/contracts/libraries/FixedPoint128.sol';
+import '@voltageswap/v3-core/contracts/libraries/TickMath.sol';
+import '@voltageswap/v3-core/contracts/libraries/Tick.sol';
+>>>>>>> upstream/testing_voltage
 import '../interfaces/INonfungiblePositionManager.sol';
 import './LiquidityAmounts.sol';
 import './PoolAddress.sol';

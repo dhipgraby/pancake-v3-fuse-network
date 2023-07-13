@@ -1,7 +1,11 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity =0.7.6;
 
+<<<<<<< HEAD
 import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+=======
+import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+>>>>>>> upstream/testing_voltage
 import './PoolAddress.sol';
 
 /// @notice Provides validation for callbacks from VoltageSwap V3 Pools

@@ -7,16 +7,16 @@ repository.
 ## Local deployment
 
 In order to deploy this code to a local testnet, you should install the npm package
-`@pancakeswap/v3-periphery`
+`@voltageswap/v3-periphery`
 and import bytecode imported from artifacts located at
-`@pancakeswap/v3-periphery/artifacts/contracts/*/*.json`.
+`@voltageswap/v3-periphery/artifacts/contracts/*/*.json`.
 For example:
 
 ```typescript
 import {
   abi as SWAP_ROUTER_ABI,
   bytecode as SWAP_ROUTER_BYTECODE,
-} from '@pancakeswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json'
+} from '@voltageswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json'
 
 // deploy the bytecode
 ```
@@ -28,10 +28,14 @@ your local deployment.
 ## Using solidity interfaces
 
 The VoltageSwap v3 periphery interfaces are available for import into solidity smart contracts
+<<<<<<< HEAD
 via the npm artifact `@pancakeswap/v3-periphery`, e.g.:
+=======
+via the npm artifact `@voltageswap/v3-periphery`, e.g.:
+>>>>>>> upstream/testing_voltage
 
 ```solidity
-import '@pancakeswap/v3-periphery/contracts/interfaces/ISwapRouter.sol';
+import '@voltageswap/v3-periphery/contracts/interfaces/ISwapRouter.sol';
 
 contract MyContract {
   ISwapRouter router;

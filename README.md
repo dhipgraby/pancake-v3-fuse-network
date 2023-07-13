@@ -48,3 +48,13 @@ We would like to acknowledge the following libraries, resources, and contributor
 
 We extend our gratitude to all the above contributors for their meaningful contributions to the blockchain community. Their work has significantly shaped the development and customization of this project.
 
+<<<<<<< HEAD
+=======
+## Contact
+
+For any inquiries, questions, or collaboration opportunities, feel free to reach out to VBS - Viken Blockchain Solutions AS:
+
+- Website: [https://www.vikenblockchain.com](https://www.vikenblockchain.com)
+- Email: <contact@vikenblockchain.com>
+
+>>>>>>> upstream/testing_voltage

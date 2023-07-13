@@ -2,7 +2,11 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
+<<<<<<< HEAD
 import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+=======
+import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+>>>>>>> upstream/testing_voltage
 import '@uniswap/lib/contracts/libraries/SafeERC20Namer.sol';
 
 import './libraries/ChainId.sol';

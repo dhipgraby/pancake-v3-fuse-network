@@ -2,7 +2,11 @@
 pragma solidity >=0.7.5;
 pragma abicoder v2;
 
+<<<<<<< HEAD
 import '@pancakeswap/v3-core/contracts/interfaces/callback/IVoltageV3SwapCallback.sol';
+=======
+import '@voltageswap/v3-core/contracts/interfaces/callback/IVoltageV3SwapCallback.sol';
+>>>>>>> upstream/testing_voltage
 
 /// @title Router token swapping functionality
 /// @notice Functions for swapping tokens via VoltageSwap V3

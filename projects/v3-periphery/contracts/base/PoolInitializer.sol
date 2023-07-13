@@ -1,8 +1,13 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity =0.7.6;
 
+<<<<<<< HEAD
 import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Factory.sol';
 import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+=======
+import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Factory.sol';
+import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+>>>>>>> upstream/testing_voltage
 
 import './PeripheryImmutableState.sol';
 import '../interfaces/IPoolInitializer.sol';

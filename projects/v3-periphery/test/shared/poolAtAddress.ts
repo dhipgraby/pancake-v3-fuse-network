@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { abi as POOL_ABI } from '@pancakeswap/v3-core/artifacts/contracts/VoltageV3Pool.sol/VoltageV3Pool.json'
+=======
+import { abi as POOL_ABI } from '@voltageswap/v3-core/artifacts/contracts/VoltageV3Pool.sol/VoltageV3Pool.json'
+>>>>>>> upstream/testing_voltage
 import { Contract, Wallet } from 'ethers'
 import { IVoltageV3Pool } from '../../typechain-types'
 

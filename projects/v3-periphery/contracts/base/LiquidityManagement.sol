@@ -2,9 +2,16 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
+<<<<<<< HEAD
 import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Factory.sol';
 import '@pancakeswap/v3-core/contracts/interfaces/callback/IVoltageV3MintCallback.sol';
 import '@pancakeswap/v3-core/contracts/libraries/TickMath.sol';
+=======
+
+import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Factory.sol';
+import '@voltageswap/v3-core/contracts/interfaces/callback/IVoltageV3MintCallback.sol';
+import '@voltageswap/v3-core/contracts/libraries/TickMath.sol';
+>>>>>>> upstream/testing_voltage
 
 import '../libraries/PoolAddress.sol';
 import '../libraries/CallbackValidation.sol';

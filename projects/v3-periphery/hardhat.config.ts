@@ -1,9 +1,6 @@
 import type { HardhatUserConfig, NetworkUserConfig } from 'hardhat/types'
-import '@nomiclabs/hardhat-ethers'
-import '@nomiclabs/hardhat-etherscan'
-import '@nomiclabs/hardhat-waffle'
+import "@nomicfoundation/hardhat-toolbox";
 import '@openzeppelin/hardhat-upgrades'
-import '@typechain/hardhat'
 import 'hardhat-watcher'
 import 'dotenv/config'
 import 'solidity-docgen'

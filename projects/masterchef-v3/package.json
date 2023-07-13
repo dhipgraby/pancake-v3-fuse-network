@@ -1,5 +1,5 @@
 {
-  "name": "@pancakeswap/masterchef-v3",
+  "name": "@voltageswap/masterchef-v3",
   "version": "1.0.0",
   "description": "Voltage MasterChef V3",
   "publishConfig": {
@@ -20,44 +20,49 @@
   "scripts": {
     "format:check": "prettier --check './**/*.{js,ts,sol}'",
     "format:write": "prettier --write './**/*.{js,ts,sol}'",
-    "test": "npx hardhat test",
-    "compile": "npx hardhat compile"
+    "test": "npx hardhat test --show-stack-traces",
+    "compile": "npx hardhat compile --show-stack-traces"
   },
   "devDependencies": {
     "@chainlink/contracts": "^0.6.1",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
-    "@nomiclabs/hardhat-ethers": "^2.2.2",
-    "@nomiclabs/hardhat-etherscan": "^3.1.5",
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.1",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
     "@nomiclabs/hardhat-truffle5": "^2.0.0",
-    "@nomiclabs/hardhat-waffle": "^2.0.3",
     "@nomiclabs/hardhat-web3": "^2.0.0",
     "@openzeppelin/contracts": "^4.8.1",
     "@openzeppelin/hardhat-upgrades": "^1.22.1",
     "@openzeppelin/test-helpers": "^0.5.11",
     "@pancakeswap/eslint-config-pancake": "^1.2.0",
     "@pancakeswap/pancake-swap-lib": "0.0.4",
-    "@pancakeswap/v3-core": "*",
-    "@pancakeswap/v3-lm-pool": "*",
-    "@pancakeswap/v3-periphery": "*",
+    "@typechain/ethers-v6": "^0.4.0",
+    "@typechain/hardhat": "^8.0.0",
     "@types/chai": "^4.2.21",
     "@types/mocha": "^8.2.2",
     "@types/node": "^14.14.35",
     "@uniswap/v3-sdk": "^3.9.0",
-    "chai": "^4.2.0",
+    "chai": "^4.3.7",
     "dotenv": "^8.2.0",
     "eslint": "^7.22.0",
-    "ethereum-waffle": "^3.2.1",
-    "ethers": "^5.0.23",
+    "ethers": "5",
     "hardhat": "^2.12.6",
     "hardhat-abi-exporter": "2.0.6",
     "hardhat-contract-sizer": "^2.0.2",
+    "hardhat-gas-reporter": "^1.0.9",
     "hardhat-watcher": "^2.1.1",
     "prettier": "^2.3.2",
     "prettier-plugin-solidity": "^1.0.0-beta.17",
-    "solidity-coverage": "^0.7.13",
+    "solidity-coverage": "^0.8.4",
     "ts-node": "^9.1.1",
+    "typechain": "^8.2.0",
     "typescript": "^4.2.3",
     "web3": "^1.3.6"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-verify": "^1.0.0"
   }
 }

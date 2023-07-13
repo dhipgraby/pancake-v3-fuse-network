@@ -2,11 +2,19 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
+<<<<<<< HEAD
 import '@pancakeswap/v3-core/contracts/libraries/SafeCast.sol';
 import '@pancakeswap/v3-core/contracts/libraries/TickMath.sol';
 import '@pancakeswap/v3-core/contracts/libraries/TickBitmap.sol';
 import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
 import '@pancakeswap/v3-core/contracts/interfaces/callback/IVoltageV3SwapCallback.sol';
+=======
+import '@voltageswap/v3-core/contracts/libraries/SafeCast.sol';
+import '@voltageswap/v3-core/contracts/libraries/TickMath.sol';
+import '@voltageswap/v3-core/contracts/libraries/TickBitmap.sol';
+import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+import '@voltageswap/v3-core/contracts/interfaces/callback/IVoltageV3SwapCallback.sol';
+>>>>>>> upstream/testing_voltage
 
 import '../interfaces/IQuoterV2.sol';
 import '../base/PeripheryImmutableState.sol';

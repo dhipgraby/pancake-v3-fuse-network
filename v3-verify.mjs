@@ -19,14 +19,14 @@ const networks = {
 
 let network = 'spark'
 
-await $`yarn workspace @pancakeswap/v3-core run hardhat run scripts/verify.ts --network ${network}`
+await $`yarn workspace @voltageswap/v3-core run hardhat run scripts/verify.ts --network ${network}`
 
-await $`yarn workspace @pancakeswap/v3-periphery run hardhat run scripts/verify.ts --network ${network}`
+await $`yarn workspace @voltageswap/v3-periphery run hardhat run scripts/verify.ts --network ${network}`
 
-await $`yarn workspace @pancakeswap/smart-router run hardhat run scripts/verify.ts --network ${network}`
+await $`yarn workspace @voltageswap/smart-router run hardhat run scripts/verify.ts --network ${network}`
 
-await $`yarn workspace @pancakeswap/masterchef-v3 run hardhat run scripts/verify.ts --network ${network}`
+await $`yarn workspace @voltageswap/masterchef-v3 run hardhat run scripts/verify.ts --network ${network}`
 
-await $`yarn workspace @pancakeswap/v3-lm-pool run hardhat run scripts/verify.ts --network ${network}`
+await $`yarn workspace @voltageswap/v3-lm-pool run hardhat run scripts/verify.ts --network ${network}`
 
 console.log(chalk.blue('Done!'))
