@@ -2,6 +2,7 @@ import type { HardhatUserConfig, NetworkUserConfig } from 'hardhat/types'
 import '@nomiclabs/hardhat-web3'
 import '@nomiclabs/hardhat-truffle5'
 import "@nomicfoundation/hardhat-toolbox";
+import "@nomicfoundation/hardhat-chai-matchers";
 import 'hardhat-abi-exporter'
 import 'hardhat-contract-sizer'
 import 'dotenv/config'

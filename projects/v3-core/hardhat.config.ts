@@ -1,5 +1,6 @@
 import type { HardhatUserConfig, NetworkUserConfig } from 'hardhat/types'
 import "@nomicfoundation/hardhat-toolbox";
+import "@nomicfoundation/hardhat-chai-matchers";
 import 'hardhat-watcher'
 import 'dotenv/config'
 import 'solidity-docgen'

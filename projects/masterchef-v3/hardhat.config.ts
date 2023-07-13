@@ -1,13 +1,15 @@
-/* eslint-disable global-require */
 /* eslint-disable @typescript-eslint/no-var-requires */
+
 import type { HardhatUserConfig, NetworkUserConfig } from "hardhat/types";
 import "@nomicfoundation/hardhat-toolbox";
+import "@nomicfoundation/hardhat-chai-matchers";
 import "@openzeppelin/hardhat-upgrades";
 import "hardhat-abi-exporter";
 import "hardhat-contract-sizer";
 import "solidity-docgen";
 import "dotenv/config";
 
+// eslint-disable-next-line global-require
 require("dotenv").config({ path: require("find-config")(".env") });
 
 const bscTestnet: NetworkUserConfig = {

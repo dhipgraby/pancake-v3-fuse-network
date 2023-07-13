@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 import { assert } from "chai";
 import { ethers, upgrades } from "hardhat";
 import { time, mineUpTo, reset } from "@nomicfoundation/hardhat-network-helpers";

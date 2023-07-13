@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "compile": "yarn workspaces run compile",
-    "test": "yarn workspaces run test --show-stack-traces"
+    "test": "yarn workspaces run test"
   },
   "devDependencies": {
     "@typechain/hardhat": "^8.0.0",
