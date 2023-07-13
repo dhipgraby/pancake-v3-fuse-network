@@ -1,5 +1,4 @@
 import type { HardhatUserConfig, NetworkUserConfig } from 'hardhat/types'
-import '@nomiclabs/hardhat-etherscan'
 import "@nomicfoundation/hardhat-toolbox";
 import '@openzeppelin/hardhat-upgrades'
 import 'hardhat-watcher'

@@ -11,7 +11,7 @@
     "test": "yarn workspaces run test --show-stack-traces"
   },
   "devDependencies": {
-    "@typechain/hardhat": "^6.1.5",
+    "@typechain/hardhat": "^8.0.0",
     "find-config": "^1.0.0",
     "solidity-docgen": "^0.6.0-beta.35",
     "zx": "^7.2.0"
