@@ -1,6 +1,6 @@
 # Solidity API
 
-## IPancakeV3Pool
+## IVoltageV3Pool
 
 ### factory
 

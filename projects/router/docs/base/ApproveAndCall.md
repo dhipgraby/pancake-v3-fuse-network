@@ -2,7 +2,7 @@
 
 ## ApproveAndCall
 
-Allows callers to approve the PancakeSwap V3 position manager from this contract,
+Allows callers to approve the VoltageSwap V3 position manager from this contract,
 for any token, and then make calls into the position manager
 
 ### getApprovalType

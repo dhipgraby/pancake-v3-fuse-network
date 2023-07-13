@@ -15,7 +15,7 @@ that a given nonfungible position manager token is worth
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| positionManager | contract INonfungiblePositionManager | The Pancake V3 NonfungiblePositionManager |
+| positionManager | contract INonfungiblePositionManager | The Voltage V3 NonfungiblePositionManager |
 | tokenId | uint256 | The tokenId of the token for which to get the total value |
 | sqrtRatioX96 | uint160 | The square root price X96 for which to calculate the principal amounts |
 
@@ -39,7 +39,7 @@ that the position is burned
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| positionManager | contract INonfungiblePositionManager | The Pancake V3 NonfungiblePositionManager |
+| positionManager | contract INonfungiblePositionManager | The Voltage V3 NonfungiblePositionManager |
 | tokenId | uint256 | The tokenId of the token for which to get the total principal owed |
 | sqrtRatioX96 | uint160 | The square root price X96 for which to calculate the principal amounts |
 
@@ -79,7 +79,7 @@ Calculates the total fees owed to the token owner
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| positionManager | contract INonfungiblePositionManager | The Pancake V3 NonfungiblePositionManager |
+| positionManager | contract INonfungiblePositionManager | The Voltage V3 NonfungiblePositionManager |
 | tokenId | uint256 | The tokenId of the token for which to get the total fees owed |
 
 #### Return Values

@@ -1,6 +1,6 @@
 # Solidity API
 
-## PancakeV3PoolDeployer
+## VoltageV3PoolDeployer
 
 ### Parameters
 
@@ -17,7 +17,7 @@ struct Parameters {
 ### parameters
 
 ```solidity
-struct PancakeV3PoolDeployer.Parameters parameters
+struct VoltageV3PoolDeployer.Parameters parameters
 ```
 
 Get the parameters to be used in constructing the pool, set transiently during pool creation.
@@ -68,7 +68,7 @@ clearing it after deploying the pool._
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| factory | address | The contract address of the PancakeSwap V3 factory |
+| factory | address | The contract address of the VoltageSwap V3 factory |
 | token0 | address | The first token of the pool by address sort order |
 | token1 | address | The second token of the pool by address sort order |
 | fee | uint24 | The fee collected upon every swap in the pool, denominated in hundredths of a bip |

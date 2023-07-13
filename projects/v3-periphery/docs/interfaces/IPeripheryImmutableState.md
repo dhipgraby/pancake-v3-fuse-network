@@ -14,7 +14,7 @@ function deployer() external view returns (address)
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| [0] | address | Returns the address of the PancakeSwap V3 deployer |
+| [0] | address | Returns the address of the VoltageSwap V3 deployer |
 
 ### factory
 
@@ -26,7 +26,7 @@ function factory() external view returns (address)
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| [0] | address | Returns the address of the PancakeSwap V3 factory |
+| [0] | address | Returns the address of the VoltageSwap V3 factory |
 
 ### WETH9
 

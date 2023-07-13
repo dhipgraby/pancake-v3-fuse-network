@@ -2,7 +2,7 @@
 
 ## NFTSVG
 
-Provides a function for generating an SVG associated with a PancakeSwap NFT
+Provides a function for generating an SVG associated with a VoltageSwap NFT
 
 ### curve1
 

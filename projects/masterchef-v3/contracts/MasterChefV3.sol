@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "./libraries/SafeCast.sol";
 import "./interfaces/INonfungiblePositionManager.sol";
 import "./interfaces/INonfungiblePositionManagerStruct.sol";
-import "./interfaces/IPancakeV3Pool.sol";
+import "./interfaces/IVoltageV3Pool.sol";
 import "./interfaces/IMasterChefV2.sol";
 import "./interfaces/ILMPool.sol";
 import "./interfaces/ILMPoolDeployer.sol";
@@ -23,7 +23,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     struct PoolInfo {
         uint256 allocPoint;
         // V3 pool address
-        IPancakeV3Pool v3Pool;
+        IVoltageV3Pool v3Pool;
         // V3 pool token0 address
         address token0;
         // V3 pool token1 address
@@ -109,7 +109,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     error ZeroAddress();
     error NotOwnerOrOperator();
     error NoBalance();
-    error NotPancakeNFT();
+    error NotVoltageNFT();
     error InvalidNFT();
     error NotOwner();
     error NoLiquidity();
@@ -122,7 +122,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     error InconsistentAmount();
     error InsufficientAmount();
 
-    event AddPool(uint256 indexed pid, uint256 allocPoint, IPancakeV3Pool indexed v3Pool, ILMPool indexed lmPool);
+    event AddPool(uint256 indexed pid, uint256 allocPoint, IVoltageV3Pool indexed v3Pool, ILMPool indexed lmPool);
     event SetPool(uint256 indexed pid, uint256 allocPoint);
     event Deposit(
         address indexed from,
@@ -267,7 +267,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     /// @param _allocPoint Number of allocation points for the new pool.
     /// @param _v3Pool Address of the V3 pool.
     /// @param _withUpdate Whether call "massUpdatePools" operation.
-    function add(uint256 _allocPoint, IPancakeV3Pool _v3Pool, bool _withUpdate) external onlyOwner {
+    function add(uint256 _allocPoint, IVoltageV3Pool _v3Pool, bool _withUpdate) external onlyOwner {
         if (_withUpdate) massUpdatePools();
 
         ILMPool lmPool = LMPoolDeployer.deploy(_v3Pool);
@@ -333,7 +333,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
         uint256 _tokenId,
         bytes calldata
     ) external nonReentrant returns (bytes4) {
-        if (msg.sender != address(nonfungiblePositionManager)) revert NotPancakeNFT();
+        if (msg.sender != address(nonfungiblePositionManager)) revert NotVoltageNFT();
         DepositCache memory cache;
         (
             ,

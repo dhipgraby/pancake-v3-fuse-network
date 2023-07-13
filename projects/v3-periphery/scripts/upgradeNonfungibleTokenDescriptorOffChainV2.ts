@@ -11,7 +11,7 @@ async function main() {
   const NonfungibleTokenPositionDescriptorV2 = await ethers.getContractFactoryFromArtifact(
     NftDescriptorOffchainV2Artifact
   )
-  const baseTokenUri = `https://nft.pancakeswap.com/v3/${network.chainId}/`
+  const baseTokenUri = `https://nft.voltageswap.com/v3/${network.chainId}/`
   console.log(baseTokenUri)
   const nonfungibleTokenPositionDescriptor = await upgrades.upgradeProxy(
     process.env.NFT_DESC_OFFCHAIN_ADDRESS!,

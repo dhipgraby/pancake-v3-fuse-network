@@ -13,7 +13,7 @@ import './libraries/Constants.sol';
 
 import './base/PeripheryPaymentsWithFeeExtended.sol';
 
-/// @title Pancake Stable Swap Router
+/// @title Voltage Stable Swap Router
 abstract contract StableSwapRouter is IStableSwapRouter, PeripheryPaymentsWithFeeExtended, Ownable, ReentrancyGuard {
     address public stableSwapFactory;
     address public stableSwapInfo;
@@ -29,7 +29,7 @@ abstract contract StableSwapRouter is IStableSwapRouter, PeripheryPaymentsWithFe
     }
 
     /**
-     * @notice Set Pancake Stable Swap Factory and Info
+     * @notice Set Voltage Stable Swap Factory and Info
      * @dev Only callable by contract owner
      */
     function setStableSwap(

@@ -897,8 +897,8 @@ describe('NFTDescriptor', () => {
     quoteTokenSymbol = quoteTokenSymbol.replace(/"/gi, '"')
     baseTokenSymbol = baseTokenSymbol.replace(/"/gi, '"')
     return {
-      name: `Pancake - ${feeTier} - ${quoteTokenSymbol}/${baseTokenSymbol} - ${prices}`,
-      description: `This NFT represents a liquidity position in a PancakeSwap V3 ${quoteTokenSymbol}-${baseTokenSymbol} pool. The owner of this NFT can modify or redeem the position.\n\
+      name: `Voltage - ${feeTier} - ${quoteTokenSymbol}/${baseTokenSymbol} - ${prices}`,
+      description: `This NFT represents a liquidity position in a VoltageSwap V3 ${quoteTokenSymbol}-${baseTokenSymbol} pool. The owner of this NFT can modify or redeem the position.\n\
 \nPool Address: ${poolAddress}\n${quoteTokenSymbol} Address: ${quoteTokenAddress.toLowerCase()}\n${baseTokenSymbol} Address: ${baseTokenAddress.toLowerCase()}\n\
 Fee Tier: ${feeTier}\nToken ID: ${tokenId}\n\n⚠️ DISCLAIMER: Due diligence is imperative when assessing this NFT. Make sure token addresses match the expected tokens, as \
 token symbols may be imitated.`,

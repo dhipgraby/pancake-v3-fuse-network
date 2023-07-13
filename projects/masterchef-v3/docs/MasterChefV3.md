@@ -7,7 +7,7 @@
 ```solidity
 struct PoolInfo {
   uint256 allocPoint;
-  contract IPancakeV3Pool v3Pool;
+  contract IVoltageV3Pool v3Pool;
   address token0;
   address token1;
   uint24 fee;
@@ -246,10 +246,10 @@ error NotOwnerOrOperator()
 error NoBalance()
 ```
 
-### NotPancakeNFT
+### NotVoltageNFT
 
 ```solidity
-error NotPancakeNFT()
+error NotVoltageNFT()
 ```
 
 ### InvalidNFT
@@ -327,7 +327,7 @@ event Init()
 ### AddPool
 
 ```solidity
-event AddPool(uint256 pid, uint256 allocPoint, contract IPancakeV3Pool v3Pool, contract ILMPool lmPool)
+event AddPool(uint256 pid, uint256 allocPoint, contract IVoltageV3Pool v3Pool, contract ILMPool lmPool)
 ```
 
 ### SetPool
@@ -515,7 +515,7 @@ function setLMPoolDeployer(contract ILMPoolDeployer _LMPoolDeployer) external
 ### add
 
 ```solidity
-function add(uint256 _allocPoint, contract IPancakeV3Pool _v3Pool, bool _withUpdate) external
+function add(uint256 _allocPoint, contract IVoltageV3Pool _v3Pool, bool _withUpdate) external
 ```
 
 Add a new pool. Can only be called by the owner.
@@ -526,7 +526,7 @@ One v3 pool can only create one pool.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | _allocPoint | uint256 | Number of allocation points for the new pool. |
-| _v3Pool | contract IPancakeV3Pool | Address of the V3 pool. |
+| _v3Pool | contract IVoltageV3Pool | Address of the V3 pool. |
 | _withUpdate | bool | Whether call "massUpdatePools" operation. |
 
 ### set

@@ -1,8 +1,8 @@
 # Solidity API
 
-## IPancakeV3Factory
+## IVoltageV3Factory
 
-The PancakeSwap V3 Factory facilitates creation of PancakeSwap V3 pools and control over the protocol fees
+The VoltageSwap V3 Factory facilitates creation of VoltageSwap V3 pools and control over the protocol fees
 
 ### TickSpacingExtraInfo
 

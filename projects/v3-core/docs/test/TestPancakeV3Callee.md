@@ -1,6 +1,6 @@
 # Solidity API
 
-## TestPancakeV3Callee
+## TestVoltageV3Callee
 
 ### swapExact0For1
 
@@ -44,16 +44,16 @@ function swapToHigherSqrtPrice(address pool, uint160 sqrtPriceX96, address recip
 event SwapCallback(int256 amount0Delta, int256 amount1Delta)
 ```
 
-### pancakeV3SwapCallback
+### voltageV3SwapCallback
 
 ```solidity
-function pancakeV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes data) external
+function voltageV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes data) external
 ```
 
-Called to `msg.sender` after executing a swap via IPancakeV3Pool#swap.
+Called to `msg.sender` after executing a swap via IVoltageV3Pool#swap.
 
 _In the implementation you must pay the pool tokens owed for the swap.
-The caller of this method must be checked to be a PancakeV3Pool deployed by the canonical PancakeV3Factory.
+The caller of this method must be checked to be a VoltageV3Pool deployed by the canonical VoltageV3Factory.
 amount0Delta and amount1Delta can both be 0 if no tokens were swapped._
 
 #### Parameters
@@ -62,7 +62,7 @@ amount0Delta and amount1Delta can both be 0 if no tokens were swapped._
 | ---- | ---- | ----------- |
 | amount0Delta | int256 | The amount of token0 that was sent (negative) or must be received (positive) by the pool by the end of the swap. If positive, the callback must send that amount of token0 to the pool. |
 | amount1Delta | int256 | The amount of token1 that was sent (negative) or must be received (positive) by the pool by the end of the swap. If positive, the callback must send that amount of token1 to the pool. |
-| data | bytes | Any data passed through by the caller via the IPancakeV3PoolActions#swap call |
+| data | bytes | Any data passed through by the caller via the IVoltageV3PoolActions#swap call |
 
 ### mint
 
@@ -76,16 +76,16 @@ function mint(address pool, address recipient, int24 tickLower, int24 tickUpper,
 event MintCallback(uint256 amount0Owed, uint256 amount1Owed)
 ```
 
-### pancakeV3MintCallback
+### voltageV3MintCallback
 
 ```solidity
-function pancakeV3MintCallback(uint256 amount0Owed, uint256 amount1Owed, bytes data) external
+function voltageV3MintCallback(uint256 amount0Owed, uint256 amount1Owed, bytes data) external
 ```
 
-Called to `msg.sender` after minting liquidity to a position from IPancakeV3Pool#mint.
+Called to `msg.sender` after minting liquidity to a position from IVoltageV3Pool#mint.
 
 _In the implementation you must pay the pool tokens owed for the minted liquidity.
-The caller of this method must be checked to be a PancakeV3Pool deployed by the canonical PancakeV3Factory._
+The caller of this method must be checked to be a VoltageV3Pool deployed by the canonical VoltageV3Factory._
 
 #### Parameters
 
@@ -93,7 +93,7 @@ The caller of this method must be checked to be a PancakeV3Pool deployed by the 
 | ---- | ---- | ----------- |
 | amount0Owed | uint256 | The amount of token0 due to the pool for the minted liquidity |
 | amount1Owed | uint256 | The amount of token1 due to the pool for the minted liquidity |
-| data | bytes | Any data passed through by the caller via the IPancakeV3PoolActions#mint call |
+| data | bytes | Any data passed through by the caller via the IVoltageV3PoolActions#mint call |
 
 ### FlashCallback
 
@@ -107,16 +107,16 @@ event FlashCallback(uint256 fee0, uint256 fee1)
 function flash(address pool, address recipient, uint256 amount0, uint256 amount1, uint256 pay0, uint256 pay1) external
 ```
 
-### pancakeV3FlashCallback
+### voltageV3FlashCallback
 
 ```solidity
-function pancakeV3FlashCallback(uint256 fee0, uint256 fee1, bytes data) external
+function voltageV3FlashCallback(uint256 fee0, uint256 fee1, bytes data) external
 ```
 
-Called to `msg.sender` after transferring to the recipient from IPancakeV3Pool#flash.
+Called to `msg.sender` after transferring to the recipient from IVoltageV3Pool#flash.
 
 _In the implementation you must repay the pool the tokens sent by flash plus the computed fee amounts.
-The caller of this method must be checked to be a PancakeV3Pool deployed by the canonical PancakeV3Factory._
+The caller of this method must be checked to be a VoltageV3Pool deployed by the canonical VoltageV3Factory._
 
 #### Parameters
 
@@ -124,5 +124,5 @@ The caller of this method must be checked to be a PancakeV3Pool deployed by the 
 | ---- | ---- | ----------- |
 | fee0 | uint256 | The fee amount in token0 due to the pool by the end of the flash |
 | fee1 | uint256 | The fee amount in token1 due to the pool by the end of the flash |
-| data | bytes | Any data passed through by the caller via the IPancakeV3PoolActions#flash call |
+| data | bytes | Any data passed through by the caller via the IVoltageV3PoolActions#flash call |
 
