@@ -4,22 +4,15 @@
 
 ## Description
 
-This repository contains a custom fork of the **VoltageSwap V3 Contracts**, created and maintained by **VBS - Viken Blockchain Solutions AS**. The forked version includes tailored modifications and enhancements to cater to specific requirements and use cases.
+This repository contains a custom fork of the **VoltageSwap V3 Contracts**, created and maintained by **OnChain Solutions AS**. The forked version includes tailored modifications and enhancements to cater to specific requirements and use cases.
 
-**VBS - Viken Blockchain Solutions AS** is an innovative blockchain solutions company focused on developing decentralized applications and smart contract solutions. This modified **VoltageSwap V3 Contracts** repository serves as a foundation for our custom projects, allowing us to extend the functionality of the **VoltageSwap decentralized exchange** on multiple blockchains.
+**OnChain Solutions AS** is an innovative blockchain solutions company focused on developing decentralized applications and smart contract solutions. This modified **VoltageSwap V3 Contracts** repository serves as a foundation for our custom projects, allowing us to extend the functionality of the **VoltageSwap decentralized exchange** on multiple blockchains.
 
 **Please note that this repository is a separate instance and is not affiliated with the official VoltageSwap project.**
 
 ## Key Features and Enhancements
 
 - Describe the main modifications, enhancements, or new features you have implemented.
-
-## Getting Started
-
-To get started with this custom fork of **VoltageSwap V3 Contracts**, you can follow these steps:
-
-1. Clone the repository to your local machine:
-2. `git clone https://github.com/Viken-Blockchain-Solutions/voltage-v3-contracts-custom.git`
 
 ### Deployments
 
@@ -54,11 +47,4 @@ We would like to acknowledge the following libraries, resources, and contributor
 - **Binance Smart Chain:** The underlying blockchain network that powers VoltageSwap and this custom fork of the VoltageSwap V3 Contracts. We acknowledge the robust infrastructure and ecosystem provided by the Binance Smart Chain for decentralized applications and DeFi solutions.
 
 We extend our gratitude to all the above contributors for their meaningful contributions to the blockchain community. Their work has significantly shaped the development and customization of this project.
-
-## Contact
-
-For any inquiries, questions, or collaboration opportunities, feel free to reach out to VBS - Viken Blockchain Solutions AS:
-
-- Website: [https://www.vikenblockchain.com](https://www.vikenblockchain.com)
-- Email: <contact@vikenblockchain.com>
 
