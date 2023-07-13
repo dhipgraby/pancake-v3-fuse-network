@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity =0.7.6;
 
-import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Factory.sol';
-import '@pancakeswap/v3-periphery/contracts/interfaces/INonfungiblePositionManager.sol';
+import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Factory.sol';
+import '@voltageswap/v3-periphery/contracts/interfaces/INonfungiblePositionManager.sol';
 
 import './VoltageV3LmPool.sol';
 

@@ -1,8 +1,8 @@
 import { ethers, network } from 'hardhat'
-import { configs } from '@pancakeswap/common/config'
-import { tryVerify } from '@pancakeswap/common/verify'
+import { configs } from '@voltageswap/common/config'
+import { tryVerify } from '@voltageswap/common/verify'
 import fs from 'fs'
-import { abi } from '@pancakeswap/v3-core/artifacts/contracts/VoltageV3Factory.sol/VoltageV3Factory.json'
+import { abi } from '@voltageswap/v3-core/artifacts/contracts/VoltageV3Factory.sol/VoltageV3Factory.json'
 
 import { parseEther } from 'ethers/lib/utils'
 const currentNetwork = network.name
@@ -16,8 +16,8 @@ async function main() {
     throw new Error(`No config found for network ${networkName}`)
   }
 
-  const v3DeployedContracts = await import(`@pancakeswap/v3-core/deployments/${networkName}.json`)
-  const mcV3DeployedContracts = await import(`@pancakeswap/masterchef-v3/deployments/${networkName}.json`)
+  const v3DeployedContracts = await import(`@voltageswap/v3-core/deployments/${networkName}.json`)
+  const mcV3DeployedContracts = await import(`@voltageswap/masterchef-v3/deployments/${networkName}.json`)
 
   const voltageV3Factory_address = v3DeployedContracts.VoltageV3Factory
 

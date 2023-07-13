@@ -3,14 +3,14 @@ import { ethers, upgrades } from "hardhat";
 import { time, mineUpTo, reset } from "@nomicfoundation/hardhat-network-helpers";
 import { TickMath } from "@uniswap/v3-sdk";
 
-import VoltageV3PoolDeployerArtifact from "@pancakeswap/v3-core/artifacts/contracts/VoltageV3PoolDeployer.sol/VoltageV3PoolDeployer.json";
-import VoltageV3FactoryArtifact from "@pancakeswap/v3-core/artifacts/contracts/VoltageV3Factory.sol/VoltageV3Factory.json";
-// import VoltageV3FactoryOwnerArtifact from "@pancakeswap/v3-core/artifacts/contracts/VoltageV3FactoryOwner.sol/VoltageV3FactoryOwner.json";
-import VoltageV3SwapRouterArtifact from "@pancakeswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json";
-import NftDescriptorOffchainArtifact from "@pancakeswap/v3-periphery/artifacts/contracts/NonfungibleTokenPositionDescriptorOffChain.sol/NonfungibleTokenPositionDescriptorOffChain.json";
-import NonfungiblePositionManagerArtifact from "@pancakeswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json";
-import VoltageV3LmPoolDeployerArtifact from "@pancakeswap/v3-lm-pool/artifacts/contracts/VoltageV3LmPoolDeployer.sol/VoltageV3LmPoolDeployer.json";
-import TestLiquidityAmountsArtifact from "@pancakeswap/v3-periphery/artifacts/contracts/test/LiquidityAmountsTest.sol/LiquidityAmountsTest.json";
+import VoltageV3PoolDeployerArtifact from "@voltageswap/v3-core/artifacts/contracts/VoltageV3PoolDeployer.sol/VoltageV3PoolDeployer.json";
+import VoltageV3FactoryArtifact from "@voltageswap/v3-core/artifacts/contracts/VoltageV3Factory.sol/VoltageV3Factory.json";
+// import VoltageV3FactoryOwnerArtifact from "@voltageswap/v3-core/artifacts/contracts/VoltageV3FactoryOwner.sol/VoltageV3FactoryOwner.json";
+import VoltageV3SwapRouterArtifact from "@voltageswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json";
+import NftDescriptorOffchainArtifact from "@voltageswap/v3-periphery/artifacts/contracts/NonfungibleTokenPositionDescriptorOffChain.sol/NonfungibleTokenPositionDescriptorOffChain.json";
+import NonfungiblePositionManagerArtifact from "@voltageswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json";
+import VoltageV3LmPoolDeployerArtifact from "@voltageswap/v3-lm-pool/artifacts/contracts/VoltageV3LmPoolDeployer.sol/VoltageV3LmPoolDeployer.json";
+import TestLiquidityAmountsArtifact from "@voltageswap/v3-periphery/artifacts/contracts/test/LiquidityAmountsTest.sol/LiquidityAmountsTest.json";
 
 import ERC20MockArtifact from "./ERC20Mock.json";
 import CakeTokenArtifact from "./CakeToken.json";

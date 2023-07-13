@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity >=0.5.0 <0.8.0;
 
-import '@pancakeswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
-import '@pancakeswap/v3-core/contracts/libraries/SafeCast.sol';
+import '@voltageswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
+import '@voltageswap/v3-core/contracts/libraries/SafeCast.sol';
 
-import '@pancakeswap/v3-core/contracts/libraries/TickMath.sol';
-import '@pancakeswap/v3-core/contracts/libraries/LiquidityMath.sol';
+import '@voltageswap/v3-core/contracts/libraries/TickMath.sol';
+import '@voltageswap/v3-core/contracts/libraries/LiquidityMath.sol';
 
 /// @title LmTick
 /// @notice Contains functions for managing tick processes and relevant calculations

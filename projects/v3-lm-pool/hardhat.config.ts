@@ -1,6 +1,5 @@
 import { HardhatUserConfig } from 'hardhat/config'
 import '@nomicfoundation/hardhat-toolbox'
-import '@typechain/hardhat'
 import 'dotenv/config'
 import { NetworkUserConfig } from 'hardhat/types'
 import 'solidity-docgen';

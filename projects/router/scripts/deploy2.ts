@@ -1,6 +1,6 @@
 import { ethers, network } from 'hardhat'
-import { configs } from '@pancakeswap/common/config'
-import { tryVerify } from '@pancakeswap/common/verify'
+import { configs } from '@voltageswap/common/config'
+import { tryVerify } from '@voltageswap/common/verify'
 import { writeFileSync } from 'fs'
 
 async function main() {
@@ -11,8 +11,8 @@ async function main() {
     throw new Error(`No config found for network ${networkName}`)
   }
 
-  const v3DeployedContracts = await import(`@pancakeswap/v3-core/deployments/${networkName}.json`)
-  const v3PeripheryDeployedContracts = await import(`@pancakeswap/v3-periphery/deployments/${networkName}.json`)
+  const v3DeployedContracts = await import(`../v3-core/deployments/${networkName}.json`)
+  const v3PeripheryDeployedContracts = await import(`../v3-periphery/deployments/${networkName}.json`)
 
   const voltageV3PoolDeployer_address = v3DeployedContracts.VoltageV3PoolDeployer
   const voltageV3Factory_address = v3DeployedContracts.VoltageV3Factory

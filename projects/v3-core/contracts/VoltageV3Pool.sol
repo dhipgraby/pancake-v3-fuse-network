@@ -25,7 +25,7 @@ import './interfaces/callback/IVoltageV3MintCallback.sol';
 import './interfaces/callback/IVoltageV3SwapCallback.sol';
 import './interfaces/callback/IVoltageV3FlashCallback.sol';
 
-import '@pancakeswap/v3-lm-pool/contracts/interfaces/IVoltageV3LmPool.sol';
+import '@voltageswap/v3-lm-pool/contracts/interfaces/IVoltageV3LmPool.sol';
 
 contract VoltageV3Pool is IVoltageV3Pool {
     using LowGasSafeMath for uint256;

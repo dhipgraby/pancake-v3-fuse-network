@@ -5,8 +5,8 @@ pragma abicoder v2;
 import '../interfaces/IStableSwapFactory.sol';
 import '../interfaces/IStableSwapInfo.sol';
 import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
-import '@pancakeswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+import '@voltageswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
+import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
 
 library SmartRouterHelper {
     using LowGasSafeMath for uint256;
@@ -205,8 +205,8 @@ library SmartRouterHelper {
         address tokenA,
         address tokenB,
         uint24 fee
-    ) public pure returns (IvoltageV3Pool) {
-        return IvoltageV3Pool(computeAddress(deployer, getPoolKey(tokenA, tokenB, fee)));
+    ) public pure returns (IVoltageV3Pool) {
+        return IVoltageV3Pool(computeAddress(deployer, getPoolKey(tokenA, tokenB, fee)));
     }
 
     /// @notice Returns the address of a valid voltageSwap V3 Pool
@@ -220,7 +220,7 @@ library SmartRouterHelper {
         address tokenA,
         address tokenB,
         uint24 fee
-    ) public view returns (IvoltageV3Pool pool) {
+    ) public view returns (IVoltageV3Pool pool) {
         return verifyCallback(deployer, getPoolKey(tokenA, tokenB, fee));
     }
 
@@ -231,9 +231,9 @@ library SmartRouterHelper {
     function verifyCallback(address deployer, PoolKey memory poolKey)
         public
         view
-        returns (IvoltageV3Pool pool)
+        returns (IVoltageV3Pool pool)
     {
-        pool = IvoltageV3Pool(computeAddress(deployer, poolKey));
+        pool = IVoltageV3Pool(computeAddress(deployer, poolKey));
         require(msg.sender == address(pool));
     }
 }

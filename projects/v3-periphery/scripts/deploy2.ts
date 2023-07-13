@@ -2,8 +2,8 @@ import bn from 'bignumber.js'
 import { Contract, ContractFactory, utils, BigNumber } from 'ethers'
 import { ethers, upgrades, network } from 'hardhat'
 import { linkLibraries } from '../util/linkLibraries'
-import { tryVerify } from '@pancakeswap/common/verify'
-import { configs } from '@pancakeswap/common/config'
+import { tryVerify } from '@voltageswap/common/verify'
+import { configs } from '@voltageswap/common/config'
 import fs from 'fs'
 
 type ContractJson = { abi: any; bytecode: string }
@@ -62,7 +62,7 @@ async function main() {
     throw new Error(`No config found for network ${networkName}`)
   }
 
-  const deployedContracts = await import(`@pancakeswap/v3-core/deployments/${networkName}.json`)
+  const deployedContracts = await import(`@voltageswap/v3-core/deployments/${networkName}.json`)
 
   const VoltageV3PoolDeployer_address = deployedContracts.VoltageV3PoolDeployer
   const VoltageV3Factory_address = deployedContracts.VoltageV3Factory

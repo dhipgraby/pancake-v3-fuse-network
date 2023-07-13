@@ -2,7 +2,7 @@
 
 ## SqrtPriceMathPartial
 
-Exposes two functions from @pancakeswap/v3-core SqrtPriceMath
+Exposes two functions from @voltageswap/v3-core SqrtPriceMath
 that use square root of price as a Q64.96 and liquidity to compute deltas
 
 ### getAmount0Delta

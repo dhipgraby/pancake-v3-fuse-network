@@ -1,4 +1,4 @@
-import { abi as IVoltageV3PoolABI } from '@pancakeswap/v3-core/artifacts/contracts/interfaces/IVoltageV3Pool.sol/IVoltageV3Pool.json'
+import { abi as IVoltageV3PoolABI } from '@voltageswap/v3-core/artifacts/contracts/interfaces/IVoltageV3Pool.sol/IVoltageV3Pool.json'
 import { Fixture } from 'ethereum-waffle'
 import { BigNumber, constants, ContractTransaction, Wallet } from 'ethers'
 import { ethers, waffle } from 'hardhat'

@@ -1,6 +1,6 @@
-import { verifyContract } from '@pancakeswap/common/verify'
-import { sleep } from '@pancakeswap/common/sleep'
-import { configs } from '@pancakeswap/common/config'
+import { verifyContract } from '@voltageswap/common/verify'
+import { sleep } from '@voltageswap/common/sleep'
+import { configs } from '@voltageswap/common/config'
 
 async function main() {
   const networkName = network.name
@@ -9,8 +9,8 @@ async function main() {
   if (!config) {
     throw new Error(`No config found for network ${networkName}`)
   }
-  const deployedContracts_v3_core = await import(`@pancakeswap/v3-core/deployments/${networkName}.json`)
-  const deployedContracts_v3_periphery = await import(`@pancakeswap/v3-periphery/deployments/${networkName}.json`)
+  const deployedContracts_v3_core = await import(`@voltageswap/v3-core/deployments/${networkName}.json`)
+  const deployedContracts_v3_periphery = await import(`@voltageswap/v3-periphery/deployments/${networkName}.json`)
 
   // Verify swapRouter
   console.log('Verify swapRouter')

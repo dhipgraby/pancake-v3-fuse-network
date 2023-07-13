@@ -1,9 +1,9 @@
-import { verifyContract } from '@pancakeswap/common/verify'
-import { sleep } from '@pancakeswap/common/sleep'
+/* import { verifyContract } from '@voltageswap/common/verify'
+import { sleep } from '@voltageswap/common/sleep'
 
 async function main() {
   const networkName = network.name
-  const deployedContracts = await import(`@pancakeswap/v3-core/deployments/${networkName}.json`)
+  const deployedContracts = await import(`@voltageswap/v3-core/deployments/${networkName}.json`)
 
   // Verify VoltageV3PoolDeployer
   console.log('Verify VoltageV3PoolDeployer')
@@ -22,3 +22,4 @@ main()
     console.error(error)
     process.exit(1)
   })
+ */

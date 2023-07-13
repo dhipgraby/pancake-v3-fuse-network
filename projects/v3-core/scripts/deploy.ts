@@ -1,4 +1,4 @@
-import { tryVerify } from '@pancakeswap/common/verify'
+import { tryVerify } from '@voltageswap/common/verify'
 import { ContractFactory } from 'ethers'
 import { ethers, network } from 'hardhat'
 import fs from 'fs'
