@@ -27,7 +27,7 @@ library PoolAddress {
     }
 
     /// @notice Deterministically computes the pool address given the factory and PoolKey
-    /// @param deployer The VoltageSwap V3 deployer contract address
+    /// @param deployer The PancakeSwap V3 deployer contract address
     /// @param key The PoolKey
     /// @return pool The contract address of the V3 pool
     function computeAddress(address deployer, PoolKey memory key) internal pure returns (address pool) {

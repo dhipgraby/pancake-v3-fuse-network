@@ -1,6 +1,8 @@
 import type { HardhatUserConfig, NetworkUserConfig } from 'hardhat/types'
-import "@nomicfoundation/hardhat-toolbox";
-import "@nomicfoundation/hardhat-chai-matchers";
+import '@nomiclabs/hardhat-ethers'
+import '@nomiclabs/hardhat-etherscan'
+import '@nomiclabs/hardhat-waffle'
+import '@typechain/hardhat'
 import 'hardhat-watcher'
 import 'dotenv/config'
 import 'solidity-docgen'
@@ -72,18 +74,6 @@ const eth: NetworkUserConfig = {
   accounts: [process.env.KEY_ETH!],
 }
 
-const spark: NetworkUserConfig = {
-  url: 'https://rpc.fusespark.io',
-  chainId: 123,
-  accounts: [process.env.KEY_SPARK!],
-}
-
-const fuse: NetworkUserConfig = {
-  url: 'https://rpc.fuse.io',
-  chainId: 122,
-  accounts: [process.env.KEY_FUSE!],
-}
-
 export default {
   networks: {
     hardhat: {
@@ -93,40 +83,16 @@ export default {
     ...(process.env.KEY_MAINNET && { bscMainnet }),
     ...(process.env.KEY_GOERLI && { goerli }),
     ...(process.env.KEY_ETH && { eth }),
-    ...(process.env.KEY_SPARK && { spark }),
-    ...(process.env.KEY_FUSE && { fuse }),
     // mainnet: bscMainnet,
   },
   etherscan: {
-    apiKey: {
-      eth: `${process.env.ETHERSCAN_API_KEY}`,
-      fuse: `${process.env.FUSESCAN_API_KEY}`,
-      spark: process.env.SPARKSCAN_API_KEY as string
-    },
-    customChains: [
-      {
-        network: "fuse",
-        chainId: 122,
-        urls: {
-          apiURL: "https://explorer.fuse.io/api",
-          browserURL: "https://explorer.fuse.io"
-        }
-      },
-      {
-        network: "spark",
-        chainId: 123,
-        urls: {
-          apiURL: "https://explorer.fusespark.io/api",
-          browserURL: "https://explorer.fusespark.io"
-        }
-      }
-    ]
+    apiKey: process.env.ETHERSCAN_API_KEY,
   },
   solidity: {
     compilers: [DEFAULT_COMPILER_SETTINGS],
     overrides: {
-      'contracts/VoltageV3Pool.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
-      'contracts/VoltageV3PoolDeployer.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
+      'contracts/PancakeV3Pool.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
+      'contracts/PancakeV3PoolDeployer.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
       'contracts/test/OutputCodeHash.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
     },
   },
@@ -141,4 +107,3 @@ export default {
     pages: 'files',
   },
 }
-  

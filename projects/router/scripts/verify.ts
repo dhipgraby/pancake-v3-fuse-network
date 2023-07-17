@@ -1,6 +1,6 @@
-import { verifyContract } from '@voltageswap/common/verify'
-import { sleep } from '@voltageswap/common/sleep'
-import { configs } from '@voltageswap/common/config'
+import { verifyContract } from '@pancakeswap/common/verify'
+import { sleep } from '@pancakeswap/common/sleep'
+import { configs } from '@pancakeswap/common/config'
 
 async function main() {
   const networkName = network.name
@@ -9,9 +9,9 @@ async function main() {
   if (!config) {
     throw new Error(`No config found for network ${networkName}`)
   }
-  const deployedContracts_v3_core = await import(`../v3-core/deployments/${networkName}.json`)
-  const deployedContracts_v3_periphery = await import(`../v3-periphery/deployments/${networkName}.json`)
-  const deployedContracts_smart_router = await import(`../smart-router/deployments/${networkName}.json`)
+  const deployedContracts_v3_core = await import(`@pancakeswap/v3-core/deployments/${networkName}.json`)
+  const deployedContracts_v3_periphery = await import(`@pancakeswap/v3-periphery/deployments/${networkName}.json`)
+  const deployedContracts_smart_router = await import(`@pancakeswap/smart-router/deployments/${networkName}.json`)
 
   // Verify SmartRouterHelper
   console.log('Verify SmartRouterHelper')
@@ -22,8 +22,8 @@ async function main() {
   console.log('Verify swapRouter')
   await verifyContract(deployedContracts_smart_router.SmartRouter, [
     config.v2Factory,
-    deployedContracts_v3_core.VoltageV3PoolDeployer,
-    deployedContracts_v3_core.VoltageV3Factory,
+    deployedContracts_v3_core.PancakeV3PoolDeployer,
+    deployedContracts_v3_core.PancakeV3Factory,
     deployedContracts_v3_periphery.NonfungiblePositionManager,
     config.stableFactory,
     config.stableInfo,
@@ -34,8 +34,8 @@ async function main() {
   // Verify mixedRouteQuoterV1
   console.log('Verify mixedRouteQuoterV1')
   await verifyContract(deployedContracts_smart_router.MixedRouteQuoterV1, [
-    deployedContracts_v3_core.VoltageV3PoolDeployer,
-    deployedContracts_v3_core.VoltageV3Factory,
+    deployedContracts_v3_core.PancakeV3PoolDeployer,
+    deployedContracts_v3_core.PancakeV3Factory,
     config.v2Factory,
     config.stableFactory,
     config.WNATIVE,
@@ -45,8 +45,8 @@ async function main() {
   // Verify quoterV2
   console.log('Verify quoterV2')
   await verifyContract(deployedContracts_smart_router.QuoterV2, [
-    deployedContracts_v3_core.VoltageV3PoolDeployer,
-    deployedContracts_v3_core.VoltageV3Factory,
+    deployedContracts_v3_core.PancakeV3PoolDeployer,
+    deployedContracts_v3_core.PancakeV3Factory,
     config.WNATIVE,
   ])
   await sleep(10000)

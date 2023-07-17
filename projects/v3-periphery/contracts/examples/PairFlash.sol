@@ -2,13 +2,8 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-<<<<<<< HEAD
-import '@pancakeswap/v3-core/contracts/interfaces/callback/IVoltageV3FlashCallback.sol';
+import '@pancakeswap/v3-core/contracts/interfaces/callback/IPancakeV3FlashCallback.sol';
 import '@pancakeswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
-=======
-import '@voltageswap/v3-core/contracts/interfaces/callback/IVoltageV3FlashCallback.sol';
-import '@voltageswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
->>>>>>> upstream/testing_voltage
 
 import '../base/PeripheryPayments.sol';
 import '../base/PeripheryImmutableState.sol';
@@ -18,8 +13,8 @@ import '../libraries/TransferHelper.sol';
 import '../interfaces/ISwapRouter.sol';
 
 /// @title Flash contract implementation
-/// @notice An example contract using the VoltageSwap V3 flash function
-contract PairFlash is IVoltageV3FlashCallback, PeripheryPayments {
+/// @notice An example contract using the PancakeSwap V3 flash function
+contract PairFlash is IPancakeV3FlashCallback, PeripheryPayments {
     using LowGasSafeMath for uint256;
     using LowGasSafeMath for int256;
 
@@ -49,7 +44,7 @@ contract PairFlash is IVoltageV3FlashCallback, PeripheryPayments {
     /// @param data The data needed in the callback passed as FlashCallbackData from `initFlash`
     /// @notice implements the callback called from flash
     /// @dev fails if the flash is not profitable, meaning the amountOut from the flash is less than the amount borrowed
-    function VoltageV3FlashCallback(
+    function pancakeV3FlashCallback(
         uint256 fee0,
         uint256 fee1,
         bytes calldata data
@@ -126,11 +121,11 @@ contract PairFlash is IVoltageV3FlashCallback, PeripheryPayments {
     }
 
     /// @param params The parameters necessary for flash and the callback, passed in as FlashParams
-    /// @notice Calls the pools flash function with data needed in `VoltageV3FlashCallback`
+    /// @notice Calls the pools flash function with data needed in `PancakeV3FlashCallback`
     function initFlash(FlashParams memory params) external {
         PoolAddress.PoolKey memory poolKey =
             PoolAddress.PoolKey({token0: params.token0, token1: params.token1, fee: params.fee1});
-        IVoltageV3Pool pool = IVoltageV3Pool(PoolAddress.computeAddress(deployer, poolKey));
+        IPancakeV3Pool pool = IPancakeV3Pool(PoolAddress.computeAddress(deployer, poolKey));
         // recipient of borrowed amounts
         // amount of token0 requested to borrow
         // amount of token1 requested to borrow

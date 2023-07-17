@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-import { abi as IVoltageV3PoolABI } from '@pancakeswap/v3-core/artifacts/contracts/interfaces/IVoltageV3Pool.sol/IVoltageV3Pool.json'
-=======
-import { abi as IVoltageV3PoolABI } from '@voltageswap/v3-core/artifacts/contracts/interfaces/IVoltageV3Pool.sol/IVoltageV3Pool.json'
->>>>>>> upstream/testing_voltage
+import { abi as IPancakeV3PoolABI } from '@pancakeswap/v3-core/artifacts/contracts/interfaces/IPancakeV3Pool.sol/IPancakeV3Pool.json'
 import { Fixture } from 'ethereum-waffle'
 import { BigNumber, constants, ContractTransaction, Wallet } from 'ethers'
 import { ethers, waffle } from 'hardhat'
-import { IVoltageV3Pool, IWETH9, MockTimeSwapRouter, TestERC20 } from '../typechain-types'
+import { IPancakeV3Pool, IWETH9, MockTimeSwapRouter, TestERC20 } from '../typechain-types'
 import completeFixture from './shared/completeFixture'
 import { FeeAmount, TICK_SPACINGS } from './shared/constants'
 import { encodePriceSqrt } from './shared/encodePriceSqrt'
@@ -25,7 +21,7 @@ describe('SwapRouter gas tests', function () {
     weth9: IWETH9
     router: MockTimeSwapRouter
     tokens: [TestERC20, TestERC20, TestERC20]
-    pools: [IVoltageV3Pool, IVoltageV3Pool, IVoltageV3Pool]
+    pools: [IPancakeV3Pool, IPancakeV3Pool, IPancakeV3Pool]
   }> = async (wallets, provider) => {
     const { weth9, factory, router, tokens, nft } = await completeFixture(wallets, provider)
 
@@ -83,10 +79,10 @@ describe('SwapRouter gas tests', function () {
       factory.getPool(weth9.address, tokens[0].address, FeeAmount.MEDIUM),
     ])
 
-    const pools = poolAddresses.map((poolAddress) => new ethers.Contract(poolAddress, IVoltageV3PoolABI, wallet)) as [
-      IVoltageV3Pool,
-      IVoltageV3Pool,
-      IVoltageV3Pool
+    const pools = poolAddresses.map((poolAddress) => new ethers.Contract(poolAddress, IPancakeV3PoolABI, wallet)) as [
+      IPancakeV3Pool,
+      IPancakeV3Pool,
+      IPancakeV3Pool
     ]
 
     return {
@@ -100,7 +96,7 @@ describe('SwapRouter gas tests', function () {
   let weth9: IWETH9
   let router: MockTimeSwapRouter
   let tokens: [TestERC20, TestERC20, TestERC20]
-  let pools: [IVoltageV3Pool, IVoltageV3Pool, IVoltageV3Pool]
+  let pools: [IPancakeV3Pool, IPancakeV3Pool, IPancakeV3Pool]
 
   let loadFixture: ReturnType<typeof waffle.createFixtureLoader>
 
@@ -271,7 +267,7 @@ describe('SwapRouter gas tests', function () {
     })
 
     it.skip('0 -> 1 minimal', async () => {
-      const calleeFactory = await ethers.getContractFactory('TestVoltageV3Callee')
+      const calleeFactory = await ethers.getContractFactory('TestPancakeV3Callee')
       const callee = await calleeFactory.deploy()
 
       await tokens[0].connect(trader).approve(callee.address, constants.MaxUint256)

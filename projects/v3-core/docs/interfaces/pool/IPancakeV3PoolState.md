@@ -1,6 +1,6 @@
 # Solidity API
 
-## IVoltageV3PoolState
+## IPancakeV3PoolState
 
 These methods compose the pool's state, and can change with any frequency including multiple times
 per transaction

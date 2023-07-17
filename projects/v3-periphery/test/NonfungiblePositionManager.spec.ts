@@ -1,13 +1,9 @@
-<<<<<<< HEAD
-import { abi as IVoltageV3PoolABI } from '@pancakeswap/v3-core/artifacts/contracts/interfaces/IVoltageV3Pool.sol/IVoltageV3Pool.json'
-=======
-import { abi as IVoltageV3PoolABI } from '@voltageswap/v3-core/artifacts/contracts/interfaces/IVoltageV3Pool.sol/IVoltageV3Pool.json'
->>>>>>> upstream/testing_voltage
+import { abi as IPancakeV3PoolABI } from '@pancakeswap/v3-core/artifacts/contracts/interfaces/IPancakeV3Pool.sol/IPancakeV3Pool.json'
 import { Fixture } from 'ethereum-waffle'
 import { BigNumberish, constants, Contract, Wallet } from 'ethers'
 import { ethers, waffle } from 'hardhat'
 import {
-  IVoltageV3Factory,
+  IPancakeV3Factory,
   IWETH9,
   MockTimeNonfungiblePositionManager,
   NonfungiblePositionManagerPositionsGasTest,
@@ -35,7 +31,7 @@ describe('NonfungiblePositionManager', () => {
 
   const nftFixture: Fixture<{
     nft: MockTimeNonfungiblePositionManager
-    factory: IVoltageV3Factory
+    factory: IPancakeV3Factory
     tokens: [TestERC20, TestERC20, TestERC20]
     weth9: IWETH9
     router: SwapRouter
@@ -60,7 +56,7 @@ describe('NonfungiblePositionManager', () => {
     }
   }
 
-  let factory: IVoltageV3Factory
+  let factory: IPancakeV3Factory
   let deployer: Contract
   let nft: MockTimeNonfungiblePositionManager
   let tokens: [TestERC20, TestERC20, TestERC20]
@@ -137,7 +133,7 @@ describe('NonfungiblePositionManager', () => {
         FeeAmount.MEDIUM
       )
       await factory.createPool(tokens[0].address, tokens[1].address, FeeAmount.MEDIUM)
-      const pool = new ethers.Contract(expectedAddress, IVoltageV3PoolABI, wallet)
+      const pool = new ethers.Contract(expectedAddress, IPancakeV3PoolABI, wallet)
 
       await pool.initialize(encodePriceSqrt(3, 1))
       const code = await wallet.provider.getCode(expectedAddress)

@@ -2,16 +2,9 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-<<<<<<< HEAD
-import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Factory.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/callback/IVoltageV3MintCallback.sol';
+import '@pancakeswap/v3-core/contracts/interfaces/IPancakeV3Factory.sol';
+import '@pancakeswap/v3-core/contracts/interfaces/callback/IPancakeV3MintCallback.sol';
 import '@pancakeswap/v3-core/contracts/libraries/TickMath.sol';
-=======
-
-import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Factory.sol';
-import '@voltageswap/v3-core/contracts/interfaces/callback/IVoltageV3MintCallback.sol';
-import '@voltageswap/v3-core/contracts/libraries/TickMath.sol';
->>>>>>> upstream/testing_voltage
 
 import '../libraries/PoolAddress.sol';
 import '../libraries/CallbackValidation.sol';
@@ -21,15 +14,15 @@ import './PeripheryPayments.sol';
 import './PeripheryImmutableState.sol';
 
 /// @title Liquidity management functions
-/// @notice Internal functions for safely managing liquidity in VoltageSwap V3
-abstract contract LiquidityManagement is IVoltageV3MintCallback, PeripheryImmutableState, PeripheryPayments {
+/// @notice Internal functions for safely managing liquidity in PancakeSwap V3
+abstract contract LiquidityManagement is IPancakeV3MintCallback, PeripheryImmutableState, PeripheryPayments {
     struct MintCallbackData {
         PoolAddress.PoolKey poolKey;
         address payer;
     }
 
-    /// @inheritdoc IVoltageV3MintCallback
-    function VoltageV3MintCallback(
+    /// @inheritdoc IPancakeV3MintCallback
+    function pancakeV3MintCallback(
         uint256 amount0Owed,
         uint256 amount1Owed,
         bytes calldata data
@@ -61,13 +54,13 @@ abstract contract LiquidityManagement is IVoltageV3MintCallback, PeripheryImmuta
             uint128 liquidity,
             uint256 amount0,
             uint256 amount1,
-            IVoltageV3Pool pool
+            IPancakeV3Pool pool
         )
     {
         PoolAddress.PoolKey memory poolKey =
             PoolAddress.PoolKey({token0: params.token0, token1: params.token1, fee: params.fee});
 
-        pool = IVoltageV3Pool(PoolAddress.computeAddress(deployer, poolKey));
+        pool = IPancakeV3Pool(PoolAddress.computeAddress(deployer, poolKey));
 
         // compute the liquidity amount
         {

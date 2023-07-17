@@ -2,23 +2,13 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-<<<<<<< HEAD
 import '@pancakeswap/v3-periphery/contracts/base/PeripheryImmutableState.sol';
 import '@pancakeswap/v3-core/contracts/libraries/SafeCast.sol';
 import '@pancakeswap/v3-core/contracts/libraries/TickMath.sol';
 import '@pancakeswap/v3-core/contracts/libraries/TickBitmap.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/callback/IVoltageV3SwapCallback.sol';
+import '@pancakeswap/v3-core/contracts/interfaces/IPancakeV3Pool.sol';
+import '@pancakeswap/v3-core/contracts/interfaces/callback/IPancakeV3SwapCallback.sol';
 import '@pancakeswap/v3-periphery/contracts/libraries/Path.sol';
-=======
-import '@voltageswap/v3-periphery/contracts/base/PeripheryImmutableState.sol';
-import '@voltageswap/v3-core/contracts/libraries/SafeCast.sol';
-import '@voltageswap/v3-core/contracts/libraries/TickMath.sol';
-import '@voltageswap/v3-core/contracts/libraries/TickBitmap.sol';
-import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
-import '@voltageswap/v3-core/contracts/interfaces/callback/IVoltageV3SwapCallback.sol';
-import '@voltageswap/v3-periphery/contracts/libraries/Path.sol';
->>>>>>> upstream/testing_voltage
 import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
 
 import '../base/ImmutableState.sol';
@@ -32,10 +22,10 @@ import '../libraries/SmartRouterHelper.sol';
 /// @notice Does not support exact output swaps since using the contract balance between exactOut swaps is not supported
 /// @dev These functions are not gas efficient and should _not_ be called on chain. Instead, optimistically execute
 /// the swap and check the amounts in the callback.
-contract MixedRouteQuoterV1 is IMixedRouteQuoterV1, IVoltageV3SwapCallback, PeripheryImmutableState {
+contract MixedRouteQuoterV1 is IMixedRouteQuoterV1, IPancakeV3SwapCallback, PeripheryImmutableState {
     using Path for bytes;
     using SafeCast for uint256;
-    using PoolTicksCounter for IVoltageV3Pool;
+    using PoolTicksCounter for IPancakeV3Pool;
 
     address public immutable factoryV2;
     address public immutable factoryStable;
@@ -65,8 +55,8 @@ contract MixedRouteQuoterV1 is IMixedRouteQuoterV1, IVoltageV3SwapCallback, Peri
 
     /************************************************** V3 **************************************************/
 
-    /// @inheritdoc IVoltageV3SwapCallback
-    function VoltageV3SwapCallback(
+    /// @inheritdoc IPancakeV3SwapCallback
+    function pancakeV3SwapCallback(
         int256 amount0Delta,
         int256 amount1Delta,
         bytes memory path
@@ -80,7 +70,7 @@ contract MixedRouteQuoterV1 is IMixedRouteQuoterV1, IVoltageV3SwapCallback, Peri
                 ? (tokenIn < tokenOut, uint256(-amount1Delta))
                 : (tokenOut < tokenIn, uint256(-amount0Delta));
 
-        IVoltageV3Pool pool = SmartRouterHelper.getPool(deployer, tokenIn, tokenOut, fee);
+        IPancakeV3Pool pool = SmartRouterHelper.getPool(deployer, tokenIn, tokenOut, fee);
         (uint160 v3SqrtPriceX96After, int24 tickAfter, , , , , ) = pool.slot0();
 
         if (isExactInput) {
@@ -119,7 +109,7 @@ contract MixedRouteQuoterV1 is IMixedRouteQuoterV1, IVoltageV3SwapCallback, Peri
 
     function handleV3Revert(
         bytes memory reason,
-        IVoltageV3Pool pool,
+        IPancakeV3Pool pool,
         uint256 gasEstimate
     )
         private
@@ -153,7 +143,7 @@ contract MixedRouteQuoterV1 is IMixedRouteQuoterV1, IVoltageV3SwapCallback, Peri
         )
     {
         bool zeroForOne = params.tokenIn < params.tokenOut;
-        IVoltageV3Pool pool = SmartRouterHelper.getPool(deployer, params.tokenIn, params.tokenOut, params.fee);
+        IPancakeV3Pool pool = SmartRouterHelper.getPool(deployer, params.tokenIn, params.tokenOut, params.fee);
 
         uint256 gasBefore = gasleft();
         try

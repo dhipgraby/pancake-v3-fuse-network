@@ -2,15 +2,9 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-<<<<<<< HEAD
-import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+import '@pancakeswap/v3-core/contracts/interfaces/IPancakeV3Pool.sol';
 import '@pancakeswap/v3-core/contracts/libraries/FixedPoint128.sol';
 import '@pancakeswap/v3-core/contracts/libraries/FullMath.sol';
-=======
-import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
-import '@voltageswap/v3-core/contracts/libraries/FixedPoint128.sol';
-import '@voltageswap/v3-core/contracts/libraries/FullMath.sol';
->>>>>>> upstream/testing_voltage
 
 import './interfaces/INonfungiblePositionManager.sol';
 import './interfaces/INonfungibleTokenPositionDescriptor.sol';
@@ -25,7 +19,7 @@ import './base/SelfPermit.sol';
 import './base/PoolInitializer.sol';
 
 /// @title NFT positions
-/// @notice Wraps Voltage V3 positions in the ERC721 non-fungible token interface
+/// @notice Wraps Pancake V3 positions in the ERC721 non-fungible token interface
 contract NonfungiblePositionManager is
     INonfungiblePositionManager,
     Multicall,
@@ -36,7 +30,7 @@ contract NonfungiblePositionManager is
     PeripheryValidation,
     SelfPermit
 {
-    // details about the Voltage position
+    // details about the pancake position
     struct Position {
         // the nonce for permits
         uint96 nonce;
@@ -79,7 +73,7 @@ contract NonfungiblePositionManager is
         address _factory,
         address _WETH9,
         address _tokenDescriptor_
-    ) ERC721Permit('Voltage V3 Positions NFT-V1', 'PCS-V3-POS', '1') PeripheryImmutableState(_deployer, _factory, _WETH9) {
+    ) ERC721Permit('Pancake V3 Positions NFT-V1', 'PCS-V3-POS', '1') PeripheryImmutableState(_deployer, _factory, _WETH9) {
         _tokenDescriptor = _tokenDescriptor_;
     }
 
@@ -144,7 +138,7 @@ contract NonfungiblePositionManager is
             uint256 amount1
         )
     {
-        IVoltageV3Pool pool;
+        IPancakeV3Pool pool;
         (liquidity, amount0, amount1, pool) = addLiquidity(
             AddLiquidityParams({
                 token0: params.token0,
@@ -217,7 +211,7 @@ contract NonfungiblePositionManager is
 
         PoolAddress.PoolKey memory poolKey = _poolIdToPoolKey[position.poolId];
 
-        IVoltageV3Pool pool;
+        IPancakeV3Pool pool;
         (liquidity, amount0, amount1, pool) = addLiquidity(
             AddLiquidityParams({
                 token0: poolKey.token0,
@@ -276,7 +270,7 @@ contract NonfungiblePositionManager is
         require(positionLiquidity >= params.liquidity);
 
         PoolAddress.PoolKey memory poolKey = _poolIdToPoolKey[position.poolId];
-        IVoltageV3Pool pool = IVoltageV3Pool(PoolAddress.computeAddress(deployer, poolKey));
+        IPancakeV3Pool pool = IPancakeV3Pool(PoolAddress.computeAddress(deployer, poolKey));
         (amount0, amount1) = pool.burn(position.tickLower, position.tickUpper, params.liquidity);
 
         require(amount0 >= params.amount0Min && amount1 >= params.amount1Min, 'Price slippage check');
@@ -328,7 +322,7 @@ contract NonfungiblePositionManager is
 
         PoolAddress.PoolKey memory poolKey = _poolIdToPoolKey[position.poolId];
 
-        IVoltageV3Pool pool = IVoltageV3Pool(PoolAddress.computeAddress(deployer, poolKey));
+        IPancakeV3Pool pool = IPancakeV3Pool(PoolAddress.computeAddress(deployer, poolKey));
 
         (uint128 tokensOwed0, uint128 tokensOwed1) = (position.tokensOwed0, position.tokensOwed1);
 

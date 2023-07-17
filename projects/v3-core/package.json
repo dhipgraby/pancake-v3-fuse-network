@@ -1,25 +1,21 @@
 {
-<<<<<<< HEAD
   "name": "@pancakeswap/v3-core",
-=======
-  "name": "@voltageswap/v3-core",
->>>>>>> upstream/testing_voltage
-  "description": "🥞 Core smart contracts of VoltageSwap V3",
+  "description": "🥞 Core smart contracts of PancakeSwap V3",
   "license": "GPL-2.0-or-later",
   "publishConfig": {
     "access": "public"
   },
   "version": "1.0.2",
   "keywords": [
-    "voltageswap",
+    "pancakeswap",
     "core",
     "v3"
   ],
   "files": [
     "contracts/interfaces",
     "contracts/libraries",
-    "artifacts/contracts/VoltageV3Factory.sol/VoltageV3Factory.json",
-    "artifacts/contracts/VoltageV3Pool.sol/VoltageV3Pool.json",
+    "artifacts/contracts/PancakeV3Factory.sol/PancakeV3Factory.json",
+    "artifacts/contracts/PancakeV3Pool.sol/PancakeV3Pool.json",
     "artifacts/contracts/interfaces/**/*.json",
     "!artifacts/contracts/interfaces/**/*.dbg.json"
   ],
@@ -27,32 +23,19 @@
     "node": ">=10"
   },
   "devDependencies": {
-<<<<<<< HEAD
+    "@pancakeswap/common": "*",
+    "@pancakeswap/v3-lm-pool": "*",
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-etherscan": "^2.1.8",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
-    "@pancakeswap/common": "*",
-    "@pancakeswap/v3-lm-pool": "*",
     "@typechain/ethers-v5": "^10.2.0",
-    "@typechain/hardhat": "^6.1.5",
-=======
-    "@nomicfoundation/hardhat-chai-matchers": "1",
-    "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
-    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
-    "@nomiclabs/hardhat-ethers": "^2.2.3",
-    "@typechain/ethers-v5": "^10.2.0",
-    "@typechain/ethers-v6": "^0.4.0",
-    "@typechain/hardhat": "^8.0.0",
->>>>>>> upstream/testing_voltage
     "@types/chai": "^4.2.6",
     "@types/mocha": "^5.2.7",
-    "@voltageswap/common": "*",
-    "@voltageswap/v3-lm-pool": "*",
-    "chai": "^4.3.7",
+    "chai": "^4.2.0",
     "decimal.js": "^10.2.1",
-    "ethers": "5",
+    "ethereum-waffle": "^3.0.2",
+    "ethers": "^5.0.8",
     "hardhat": "^2.2.0",
-    "hardhat-gas-reporter": "^1.0.9",
     "hardhat-typechain": "^0.3.5",
     "hardhat-watcher": "^2.1.1",
     "mocha": "^6.2.2",
@@ -61,22 +44,13 @@
     "prettier-plugin-solidity": "^1.0.0-alpha.59",
     "solhint": "^3.2.1",
     "solhint-plugin-prettier": "^0.0.5",
-    "solidity-coverage": "^0.8.4",
     "ts-generator": "^0.1.1",
     "ts-node": "^8.5.4",
-<<<<<<< HEAD
     "typechain": "^8.1.1",
-=======
-    "typechain": "^8.2.0",
->>>>>>> upstream/testing_voltage
-    "typescript": "^3.7.3",
-    "zx": "^7.2.0"
+    "typescript": "^3.7.3"
   },
   "scripts": {
     "compile": "hardhat compile",
     "test": "hardhat test"
-  },
-  "dependencies": {
-    "@nomicfoundation/hardhat-verify": "^1.0.3"
   }
 }

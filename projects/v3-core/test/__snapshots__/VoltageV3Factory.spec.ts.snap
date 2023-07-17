@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`VoltageV3Factory #createPool gas 1`] = `4729417`;
-
-exports[`VoltageV3Factory factory bytecode size 1`] = `5151`;
-
-exports[`VoltageV3Factory pool bytecode size 1`] = `22962`;

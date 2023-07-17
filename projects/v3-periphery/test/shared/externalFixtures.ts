@@ -1,23 +1,15 @@
 import {
   abi as FACTORY_ABI,
   bytecode as FACTORY_BYTECODE,
-<<<<<<< HEAD
-} from '@pancakeswap/v3-core/artifacts/contracts/VoltageV3Factory.sol/VoltageV3Factory.json'
+} from '@pancakeswap/v3-core/artifacts/contracts/PancakeV3Factory.sol/PancakeV3Factory.json'
 import {
   abi as DEPLOYER_ABI,
   bytecode as DEPLOYER_BYTECODE,
-} from '@pancakeswap/v3-core/artifacts/contracts/VoltageV3PoolDeployer.sol/VoltageV3PoolDeployer.json'
-=======
-} from '@voltageswap/v3-core/artifacts/contracts/VoltageV3Factory.sol/VoltageV3Factory.json'
-import {
-  abi as DEPLOYER_ABI,
-  bytecode as DEPLOYER_BYTECODE,
-} from '@voltageswap/v3-core/artifacts/contracts/VoltageV3PoolDeployer.sol/VoltageV3PoolDeployer.json'
->>>>>>> upstream/testing_voltage
+} from '@pancakeswap/v3-core/artifacts/contracts/PancakeV3PoolDeployer.sol/PancakeV3PoolDeployer.json'
 import { abi as FACTORY_V2_ABI, bytecode as FACTORY_V2_BYTECODE } from '@uniswap/v2-core/build/UniswapV2Factory.json'
 import { Fixture } from 'ethereum-waffle'
 import { ethers, waffle } from 'hardhat'
-import { IVoltageV3Factory, IWETH9, MockTimeSwapRouter } from '../../typechain-types'
+import { IPancakeV3Factory, IWETH9, MockTimeSwapRouter } from '../../typechain-types'
 
 import WETH9 from '../contracts/WETH9.json'
 import { Contract } from '@ethersproject/contracts'
@@ -45,7 +37,7 @@ export const v2FactoryFixture: Fixture<{ factory: Contract }> = async ([wallet])
   return { factory }
 }
 
-const v3CoreFactoryFixture: Fixture<{ deployer: Contract; factory: IVoltageV3Factory }> = async ([wallet]) => {
+const v3CoreFactoryFixture: Fixture<{ deployer: Contract; factory: IPancakeV3Factory }> = async ([wallet]) => {
   const deployer = await waffle.deployContract(wallet, {
     bytecode: DEPLOYER_BYTECODE,
     abi: DEPLOYER_ABI,
@@ -57,7 +49,7 @@ const v3CoreFactoryFixture: Fixture<{ deployer: Contract; factory: IVoltageV3Fac
       abi: FACTORY_ABI,
     },
     [deployer.address]
-  )) as IVoltageV3Factory
+  )) as IPancakeV3Factory
 
   await deployer.setFactoryAddress(factory.address)
 
@@ -69,7 +61,7 @@ const v3CoreFactoryFixture: Fixture<{ deployer: Contract; factory: IVoltageV3Fac
 
 export const v3RouterFixture: Fixture<{
   weth9: IWETH9
-  factory: IVoltageV3Factory
+  factory: IPancakeV3Factory
   router: MockTimeSwapRouter
   deployer: any
 }> = async ([wallet], provider) => {

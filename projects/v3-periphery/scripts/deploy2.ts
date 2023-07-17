@@ -2,8 +2,8 @@ import bn from 'bignumber.js'
 import { Contract, ContractFactory, utils, BigNumber } from 'ethers'
 import { ethers, upgrades, network } from 'hardhat'
 import { linkLibraries } from '../util/linkLibraries'
-import { tryVerify } from '@voltageswap/common/verify'
-import { configs } from '@voltageswap/common/config'
+import { tryVerify } from '@pancakeswap/common/verify'
+import { configs } from '@pancakeswap/common/config'
 import fs from 'fs'
 
 type ContractJson = { abi: any; bytecode: string }
@@ -11,7 +11,7 @@ const artifacts: { [name: string]: ContractJson } = {
   QuoterV2: require('../artifacts/contracts/lens/QuoterV2.sol/QuoterV2.json'),
   TickLens: require('../artifacts/contracts/lens/TickLens.sol/TickLens.json'),
   V3Migrator: require('../artifacts/contracts/V3Migrator.sol/V3Migrator.json'),
-  VoltageInterfaceMulticall: require('../artifacts/contracts/lens/VoltageInterfaceMulticall.sol/VoltageInterfaceMulticall.json'),
+  PancakeInterfaceMulticall: require('../artifacts/contracts/lens/PancakeInterfaceMulticall.sol/PancakeInterfaceMulticall.json'),
   // eslint-disable-next-line global-require
   SwapRouter: require('../artifacts/contracts/SwapRouter.sol/SwapRouter.json'),
   // eslint-disable-next-line global-require
@@ -62,15 +62,15 @@ async function main() {
     throw new Error(`No config found for network ${networkName}`)
   }
 
-  const deployedContracts = await import(`@voltageswap/v3-core/deployments/${networkName}.json`)
+  const deployedContracts = await import(`@pancakeswap/v3-core/deployments/${networkName}.json`)
 
-  const VoltageV3PoolDeployer_address = deployedContracts.VoltageV3PoolDeployer
-  const VoltageV3Factory_address = deployedContracts.VoltageV3Factory
+  const pancakeV3PoolDeployer_address = deployedContracts.PancakeV3PoolDeployer
+  const pancakeV3Factory_address = deployedContracts.PancakeV3Factory
 
   const SwapRouter = new ContractFactory(artifacts.SwapRouter.abi, artifacts.SwapRouter.bytecode, owner)
-  const swapRouter = await SwapRouter.deploy(VoltageV3PoolDeployer_address, VoltageV3Factory_address, config.WNATIVE)
+  const swapRouter = await SwapRouter.deploy(pancakeV3PoolDeployer_address, pancakeV3Factory_address, config.WNATIVE)
 
-  // await tryVerify(swapRouter, [VoltageV3PoolDeployer_address, VoltageV3Factory_address, config.WNATIVE])
+  // await tryVerify(swapRouter, [pancakeV3PoolDeployer_address, pancakeV3Factory_address, config.WNATIVE])
   console.log('swapRouter', swapRouter.address)
 
   // const NFTDescriptor = new ContractFactory(artifacts.NFTDescriptor.abi, artifacts.NFTDescriptor.bytecode, owner)
@@ -126,7 +126,7 @@ async function main() {
     artifacts.NonfungibleTokenPositionDescriptorOffChain.bytecode,
     owner
   )
-  const baseTokenUri = 'https://nft.Voltageswap.com/v3/'
+  const baseTokenUri = 'https://nft.pancakeswap.com/v3/'
   const nonfungibleTokenPositionDescriptor = await upgrades.deployProxy(NonfungibleTokenPositionDescriptor, [
     baseTokenUri,
   ])
@@ -141,43 +141,43 @@ async function main() {
     owner
   )
   const nonfungiblePositionManager = await NonfungiblePositionManager.deploy(
-    VoltageV3PoolDeployer_address,
-    VoltageV3Factory_address,
+    pancakeV3PoolDeployer_address,
+    pancakeV3Factory_address,
     config.WNATIVE,
     nonfungibleTokenPositionDescriptor.address
   )
 
   // await tryVerify(nonfungiblePositionManager, [
-  //   VoltageV3PoolDeployer_address,
-  //   VoltageV3Factory_address,
+  //   pancakeV3PoolDeployer_address,
+  //   pancakeV3Factory_address,
   //   config.WNATIVE,
   //   nonfungibleTokenPositionDescriptor.address,
   // ])
   console.log('nonfungiblePositionManager', nonfungiblePositionManager.address)
 
-  const VoltageInterfaceMulticall = new ContractFactory(
-    artifacts.VoltageInterfaceMulticall.abi,
-    artifacts.VoltageInterfaceMulticall.bytecode,
+  const PancakeInterfaceMulticall = new ContractFactory(
+    artifacts.PancakeInterfaceMulticall.abi,
+    artifacts.PancakeInterfaceMulticall.bytecode,
     owner
   )
 
-  const VoltageInterfaceMulticall = await VoltageInterfaceMulticall.deploy()
-  console.log('VoltageInterfaceMulticall', VoltageInterfaceMulticall.address)
+  const pancakeInterfaceMulticall = await PancakeInterfaceMulticall.deploy()
+  console.log('PancakeInterfaceMulticall', pancakeInterfaceMulticall.address)
 
-  // await tryVerify(VoltageInterfaceMulticall)
+  // await tryVerify(pancakeInterfaceMulticall)
 
   const V3Migrator = new ContractFactory(artifacts.V3Migrator.abi, artifacts.V3Migrator.bytecode, owner)
   const v3Migrator = await V3Migrator.deploy(
-    VoltageV3PoolDeployer_address,
-    VoltageV3Factory_address,
+    pancakeV3PoolDeployer_address,
+    pancakeV3Factory_address,
     config.WNATIVE,
     nonfungiblePositionManager.address
   )
   console.log('V3Migrator', v3Migrator.address)
 
   // await tryVerify(v3Migrator, [
-  //   VoltageV3PoolDeployer_address,
-  //   VoltageV3Factory_address,
+  //   pancakeV3PoolDeployer_address,
+  //   pancakeV3Factory_address,
   //   config.WNATIVE,
   //   nonfungiblePositionManager.address,
   // ])
@@ -189,10 +189,10 @@ async function main() {
   // await tryVerify(tickLens)
 
   const QuoterV2 = new ContractFactory(artifacts.QuoterV2.abi, artifacts.QuoterV2.bytecode, owner)
-  const quoterV2 = await QuoterV2.deploy(VoltageV3PoolDeployer_address, VoltageV3Factory_address, config.WNATIVE)
+  const quoterV2 = await QuoterV2.deploy(pancakeV3PoolDeployer_address, pancakeV3Factory_address, config.WNATIVE)
   console.log('QuoterV2', quoterV2.address)
 
-  // await tryVerify(quoterV2, [VoltageV3PoolDeployer_address, VoltageV3Factory_address, config.WNATIVE])
+  // await tryVerify(quoterV2, [pancakeV3PoolDeployer_address, pancakeV3Factory_address, config.WNATIVE])
 
   const contracts = {
     SwapRouter: swapRouter.address,
@@ -203,7 +203,7 @@ async function main() {
     // NFTDescriptorEx: nftDescriptorEx.address,
     NonfungibleTokenPositionDescriptor: nonfungibleTokenPositionDescriptor.address,
     NonfungiblePositionManager: nonfungiblePositionManager.address,
-    VoltageInterfaceMulticall: VoltageInterfaceMulticall.address,
+    PancakeInterfaceMulticall: pancakeInterfaceMulticall.address,
   }
 
   fs.writeFileSync(`./deployments/${networkName}.json`, JSON.stringify(contracts, null, 2))

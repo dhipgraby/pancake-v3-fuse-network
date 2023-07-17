@@ -2,7 +2,7 @@
 
 ## NonfungiblePositionManager
 
-Wraps Voltage V3 positions in the ERC721 non-fungible token interface
+Wraps Pancake V3 positions in the ERC721 non-fungible token interface
 
 ### Position
 

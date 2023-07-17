@@ -32,7 +32,7 @@ constructor(address _stableSwapFactory, address _stableSwapInfo) internal
 function setStableSwap(address _factory, address _info) external
 ```
 
-Set Voltage Stable Swap Factory and Info
+Set Pancake Stable Swap Factory and Info
 
 _Only callable by contract owner_
 
