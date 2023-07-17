@@ -9,7 +9,7 @@ contract TestCallbackValidation {
         address tokenA,
         address tokenB,
         uint24 fee
-    ) external view returns (IPancakeV3Pool pool) {
+    ) external view returns (IVoltageV3Pool pool) {
         return CallbackValidation.verifyCallback(factory, tokenA, tokenB, fee);
     }
 }

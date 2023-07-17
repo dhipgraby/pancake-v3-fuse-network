@@ -5,9 +5,9 @@
   "MixedRouteQuoterV1": "0x0a7DE23cF80aBA83Ca5d4a429D80E1224b3dCC91",
   "QuoterV2": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
   "TokenValidator": "0x023108300557958e6eEf0DCc69e2D3804A6F13a1",
-  "PancakeV3Factory": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
-  "PancakeV3PoolDeployer": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-  "PancakeV3FactoryOwner": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+  "VoltageV3Factory": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+  "VoltageV3PoolDeployer": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "VoltageV3FactoryOwner": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
   "SwapRouter": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
   "V3Migrator": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
   "TickLens": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
@@ -15,6 +15,6 @@
   "TransparentUpgradeableProxy": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
   "NonfungibleTokenPositionDescriptor": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
   "NonfungiblePositionManager": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
-  "PancakeInterfaceMulticall": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
-  "PancakeV3LmPoolDeployer": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+  "VoltageInterfaceMulticall": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+  "VoltageV3LmPoolDeployer": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
 }

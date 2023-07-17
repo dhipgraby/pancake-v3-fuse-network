@@ -4,8 +4,8 @@ pragma abicoder v2;
 
 import '@pancakeswap/v3-core/contracts/libraries/SafeCast.sol';
 import '@pancakeswap/v3-core/contracts/libraries/TickMath.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/IPancakeV3Pool.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/callback/IPancakeV3SwapCallback.sol';
+import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+import '@pancakeswap/v3-core/contracts/interfaces/callback/IVoltageV3SwapCallback.sol';
 
 import '../interfaces/IQuoter.sol';
 import '../base/PeripheryImmutableState.sol';
@@ -17,7 +17,7 @@ import '../libraries/CallbackValidation.sol';
 /// @notice Allows getting the expected amount out or amount in for a given swap without executing the swap
 /// @dev These functions are not gas efficient and should _not_ be called on chain. Instead, optimistically execute
 /// the swap and check the amounts in the callback.
-contract Quoter is IQuoter, IPancakeV3SwapCallback, PeripheryImmutableState {
+contract Quoter is IQuoter, IVoltageV3SwapCallback, PeripheryImmutableState {
     using Path for bytes;
     using SafeCast for uint256;
 
@@ -30,11 +30,11 @@ contract Quoter is IQuoter, IPancakeV3SwapCallback, PeripheryImmutableState {
         address tokenA,
         address tokenB,
         uint24 fee
-    ) private view returns (IPancakeV3Pool) {
-        return IPancakeV3Pool(PoolAddress.computeAddress(deployer, PoolAddress.getPoolKey(tokenA, tokenB, fee)));
+    ) private view returns (IVoltageV3Pool) {
+        return IVoltageV3Pool(PoolAddress.computeAddress(deployer, PoolAddress.getPoolKey(tokenA, tokenB, fee)));
     }
 
-    /// @inheritdoc IPancakeV3SwapCallback
+    /// @inheritdoc IVoltageV3SwapCallback
     function pancakeV3SwapCallback(
         int256 amount0Delta,
         int256 amount1Delta,

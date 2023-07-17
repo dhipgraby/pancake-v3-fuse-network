@@ -35,7 +35,9 @@ const config: HardhatUserConfig = {
     version: '0.7.6',
   },
   networks: {
-    hardhat: {},
+    hardhat: {
+      allowUnlimitedContractSize: true,
+    },
     ...(process.env.KEY_TESTNET && { bscTestnet }),
     ...(process.env.KEY_MAINNET && { bscMainnet }),
     ...(process.env.KEY_GOERLI && { goerli }),

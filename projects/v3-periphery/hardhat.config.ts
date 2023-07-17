@@ -15,7 +15,7 @@ const LOW_OPTIMIZER_COMPILER_SETTINGS = {
     evmVersion: 'istanbul',
     optimizer: {
       enabled: true,
-      runs: 2_000,
+      runs: 10_000,
     },
     metadata: {
       bytecodeHash: 'none',
@@ -29,7 +29,7 @@ const LOWEST_OPTIMIZER_COMPILER_SETTINGS = {
     evmVersion: 'istanbul',
     optimizer: {
       enabled: true,
-      runs: 1_000,
+      runs: 10_000,
     },
     metadata: {
       bytecodeHash: 'none',

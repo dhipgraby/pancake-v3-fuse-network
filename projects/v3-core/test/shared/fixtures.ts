@@ -1,33 +1,33 @@
 import { BigNumber } from 'ethers'
 import { ethers } from 'hardhat'
-import { MockTimePancakeV3Pool } from '../../typechain-types/contracts/test/MockTimePancakeV3Pool'
+import { MockTimeVoltageV3Pool } from '../../typechain-types/contracts/test/MockTimeVoltageV3Pool'
 import { TestERC20 } from '../../typechain-types/contracts/test/TestERC20'
-import { PancakeV3Factory } from '../../typechain-types/contracts/PancakeV3Factory'
-import { PancakeV3PoolDeployer } from '../../typechain-types/contracts/PancakeV3PoolDeployer'
-import { TestPancakeV3Callee } from '../../typechain-types/contracts/test/TestPancakeV3Callee'
-import { TestPancakeV3Router } from '../../typechain-types/contracts/test/TestPancakeV3Router'
-import { MockTimePancakeV3PoolDeployer } from '../../typechain-types/contracts/test/MockTimePancakeV3PoolDeployer'
-import PancakeV3LmPoolArtifact from '@pancakeswap/v3-lm-pool/artifacts/contracts/PancakeV3LmPool.sol/PancakeV3LmPool.json'
+import { VoltageV3Factory } from '../../typechain-types/contracts/VoltageV3Factory'
+import { VoltageV3PoolDeployer } from '../../typechain-types/contracts/VoltageV3PoolDeployer'
+import { TestVoltageV3Callee } from '../../typechain-types/contracts/test/TestVoltageV3Callee'
+import { TestVoltageV3Router } from '../../typechain-types/contracts/test/TestVoltageV3Router'
+import { MockTimeVoltageV3PoolDeployer } from '../../typechain-types/contracts/test/MockTimeVoltageV3PoolDeployer'
+import VoltageV3LmPoolArtifact from '@pancakeswap/v3-lm-pool/artifacts/contracts/VoltageV3LmPool.sol/VoltageV3LmPool.json'
 
 import { Fixture } from 'ethereum-waffle'
 
 interface FactoryFixture {
-  factory: PancakeV3Factory
+  factory: VoltageV3Factory
 }
 
 interface DeployerFixture {
-  deployer: PancakeV3PoolDeployer
+  deployer: VoltageV3PoolDeployer
 }
 
 async function factoryFixture(): Promise<FactoryFixture> {
   const { deployer } = await deployerFixture()
-  const factoryFactory = await ethers.getContractFactory('PancakeV3Factory')
-  const factory = (await factoryFactory.deploy(deployer.address)) as PancakeV3Factory
+  const factoryFactory = await ethers.getContractFactory('VoltageV3Factory')
+  const factory = (await factoryFactory.deploy(deployer.address)) as VoltageV3Factory
   return { factory }
 }
 async function deployerFixture(): Promise<DeployerFixture> {
-  const deployerFactory = await ethers.getContractFactory('PancakeV3PoolDeployer')
-  const deployer = (await deployerFactory.deploy()) as PancakeV3PoolDeployer
+  const deployerFactory = await ethers.getContractFactory('VoltageV3PoolDeployer')
+  const deployer = (await deployerFactory.deploy()) as VoltageV3PoolDeployer
   return { deployer }
 }
 
@@ -53,14 +53,14 @@ async function tokensFixture(): Promise<TokensFixture> {
 type TokensAndFactoryFixture = FactoryFixture & TokensFixture
 
 interface PoolFixture extends TokensAndFactoryFixture {
-  swapTargetCallee: TestPancakeV3Callee
-  swapTargetRouter: TestPancakeV3Router
+  swapTargetCallee: TestVoltageV3Callee
+  swapTargetRouter: TestVoltageV3Router
   createPool(
     fee: number,
     tickSpacing: number,
     firstToken?: TestERC20,
     secondToken?: TestERC20
-  ): Promise<MockTimePancakeV3Pool>
+  ): Promise<MockTimeVoltageV3Pool>
 }
 
 // Monday, October 5, 2020 9:00:00 AM GMT-05:00
@@ -70,16 +70,16 @@ export const poolFixture: Fixture<PoolFixture> = async function (): Promise<Pool
   const { factory } = await factoryFixture()
   const { token0, token1, token2 } = await tokensFixture()
 
-  const MockTimePancakeV3PoolDeployerFactory = await ethers.getContractFactory('MockTimePancakeV3PoolDeployer')
-  const MockTimePancakeV3PoolFactory = await ethers.getContractFactory('MockTimePancakeV3Pool')
+  const MockTimeVoltageV3PoolDeployerFactory = await ethers.getContractFactory('MockTimeVoltageV3PoolDeployer')
+  const MockTimeVoltageV3PoolFactory = await ethers.getContractFactory('MockTimeVoltageV3Pool')
 
-  const calleeContractFactory = await ethers.getContractFactory('TestPancakeV3Callee')
-  const routerContractFactory = await ethers.getContractFactory('TestPancakeV3Router')
+  const calleeContractFactory = await ethers.getContractFactory('TestVoltageV3Callee')
+  const routerContractFactory = await ethers.getContractFactory('TestVoltageV3Router')
 
-  const swapTargetCallee = (await calleeContractFactory.deploy()) as TestPancakeV3Callee
-  const swapTargetRouter = (await routerContractFactory.deploy()) as TestPancakeV3Router
+  const swapTargetCallee = (await calleeContractFactory.deploy()) as TestVoltageV3Callee
+  const swapTargetRouter = (await routerContractFactory.deploy()) as TestVoltageV3Router
 
-  const PancakeV3LmPoolFactory = await ethers.getContractFactoryFromArtifact(PancakeV3LmPoolArtifact)
+  const VoltageV3LmPoolFactory = await ethers.getContractFactoryFromArtifact(VoltageV3LmPoolArtifact)
 
   return {
     token0,
@@ -90,7 +90,7 @@ export const poolFixture: Fixture<PoolFixture> = async function (): Promise<Pool
     swapTargetRouter,
     createPool: async (fee, tickSpacing, firstToken = token0, secondToken = token1) => {
       const mockTimePoolDeployer =
-        (await MockTimePancakeV3PoolDeployerFactory.deploy()) as MockTimePancakeV3PoolDeployer
+        (await MockTimeVoltageV3PoolDeployerFactory.deploy()) as MockTimeVoltageV3PoolDeployer
       const tx = await mockTimePoolDeployer.deploy(
         factory.address,
         firstToken.address,
@@ -102,13 +102,13 @@ export const poolFixture: Fixture<PoolFixture> = async function (): Promise<Pool
       const receipt = await tx.wait()
       const poolAddress = receipt.events?.[0].args?.pool as string
 
-      const mockTimePancakeV3Pool = MockTimePancakeV3PoolFactory.attach(poolAddress) as MockTimePancakeV3Pool
+      const mockTimeVoltageV3Pool = MockTimeVoltageV3PoolFactory.attach(poolAddress) as MockTimeVoltageV3Pool
 
       await (
         await factory.setLmPool(
           poolAddress,
           (
-            await PancakeV3LmPoolFactory.deploy(
+            await VoltageV3LmPoolFactory.deploy(
               poolAddress,
               ethers.constants.AddressZero,
               Math.floor(Date.now() / 1000)
@@ -117,7 +117,7 @@ export const poolFixture: Fixture<PoolFixture> = async function (): Promise<Pool
         )
       ).wait()
 
-      return mockTimePancakeV3Pool
+      return mockTimeVoltageV3Pool
     },
   }
 }

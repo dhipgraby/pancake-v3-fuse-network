@@ -2,7 +2,7 @@ import { ethers, network } from 'hardhat'
 import { configs } from '@pancakeswap/common/config'
 import { tryVerify } from '@pancakeswap/common/verify'
 import fs from 'fs'
-import { abi } from '@pancakeswap/v3-core/artifacts/contracts/PancakeV3Factory.sol/PancakeV3Factory.json'
+import { abi } from '@pancakeswap/v3-core/artifacts/contracts/VoltageV3Factory.sol/VoltageV3Factory.json'
 
 import { parseEther } from 'ethers/lib/utils'
 const currentNetwork = network.name
@@ -19,10 +19,10 @@ async function main() {
   const v3DeployedContracts = await import(`@pancakeswap/v3-core/deployments/${networkName}.json`)
   const mcV3DeployedContracts = await import(`@pancakeswap/masterchef-v3/deployments/${networkName}.json`)
 
-  const pancakeV3Factory_address = v3DeployedContracts.PancakeV3Factory
+  const pancakeV3Factory_address = v3DeployedContracts.VoltageV3Factory
 
-  const PancakeV3LmPoolDeployer = await ethers.getContractFactory('PancakeV3LmPoolDeployer')
-  const pancakeV3LmPoolDeployer = await PancakeV3LmPoolDeployer.deploy(mcV3DeployedContracts.MasterChefV3)
+  const VoltageV3LmPoolDeployer = await ethers.getContractFactory('VoltageV3LmPoolDeployer')
+  const pancakeV3LmPoolDeployer = await VoltageV3LmPoolDeployer.deploy(mcV3DeployedContracts.MasterChefV3)
 
   console.log('pancakeV3LmPoolDeployer deployed to:', pancakeV3LmPoolDeployer.address)
 
@@ -31,7 +31,7 @@ async function main() {
   await pancakeV3Factory.setLmPoolDeployer(pancakeV3LmPoolDeployer.address)
 
   const contracts = {
-    PancakeV3LmPoolDeployer: pancakeV3LmPoolDeployer.address,
+    VoltageV3LmPoolDeployer: pancakeV3LmPoolDeployer.address,
   }
   fs.writeFileSync(`./deployments/${networkName}.json`, JSON.stringify(contracts, null, 2))
 }

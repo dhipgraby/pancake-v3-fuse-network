@@ -14,7 +14,7 @@ const LOW_OPTIMIZER_COMPILER_SETTINGS = {
     evmVersion: 'istanbul',
     optimizer: {
       enabled: true,
-      runs: 2_000,
+      runs: 10_000,
     },
     metadata: {
       bytecodeHash: 'none',
@@ -28,7 +28,7 @@ const LOWEST_OPTIMIZER_COMPILER_SETTINGS = {
     evmVersion: 'istanbul',
     optimizer: {
       enabled: true,
-      runs: 400,
+      runs: 1_000_000,
     },
     metadata: {
       bytecodeHash: 'none',
@@ -91,8 +91,8 @@ export default {
   solidity: {
     compilers: [DEFAULT_COMPILER_SETTINGS],
     overrides: {
-      'contracts/PancakeV3Pool.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
-      'contracts/PancakeV3PoolDeployer.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
+      'contracts/VoltageV3Pool.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
+      'contracts/VoltageV3PoolDeployer.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
       'contracts/test/OutputCodeHash.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
     },
   },

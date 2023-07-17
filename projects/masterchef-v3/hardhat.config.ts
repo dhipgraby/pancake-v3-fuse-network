@@ -14,6 +14,8 @@ import "dotenv/config";
 
 require("dotenv").config({ path: require("find-config")(".env") });
 
+
+
 const bscTestnet: NetworkUserConfig = {
   url: "https://data-seed-prebsc-1-s1.binance.org:8545/",
   chainId: 97,
@@ -38,10 +40,12 @@ const eth: NetworkUserConfig = {
   accounts: [process.env.KEY_ETH!],
 };
 
-const config = {
+const HardhatUserConfig = {
   defaultNetwork: "hardhat",
   networks: {
-    hardhat: {},
+    hardhat: {
+      allowUnlimitedContractSize: true,
+    },
     ...(process.env.KEY_TESTNET && { bscTestnet }),
     ...(process.env.KEY_MAINNET && { bscMainnet }),
     ...(process.env.KEY_GOERLI && { goerli }),
@@ -59,7 +63,7 @@ const config = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 999,
+            runs: 1000,
           },
         },
       },
@@ -68,7 +72,7 @@ const config = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 999,
+            runs: 1000,
           },
         },
       },
@@ -85,4 +89,4 @@ const config = {
   },
 };
 
-export default config;
+export default HardhatUserConfig;
