@@ -2,7 +2,7 @@
 pragma solidity >=0.7.0;
 pragma abicoder v2;
 
-import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+import '@pancakeswap/v3-core/contracts/interfaces/IPancakeV3Pool.sol';
 import '@pancakeswap/v3-core/contracts/libraries/TickMath.sol';
 import '@pancakeswap/v3-core/contracts/libraries/BitMath.sol';
 import '@pancakeswap/v3-core/contracts/libraries/FullMath.sol';
@@ -112,7 +112,7 @@ library NFTDescriptor {
         return
             string(
                 abi.encodePacked(
-                    'This NFT represents a liquidity position in a VoltageSwap V3 ',
+                    'This NFT represents a liquidity position in a PancakeSwap V3 ',
                     quoteTokenSymbol,
                     '-',
                     baseTokenSymbol,
@@ -160,7 +160,7 @@ library NFTDescriptor {
         return
             string(
                 abi.encodePacked(
-                    'Voltage - ',
+                    'Pancake - ',
                     feeTier,
                     ' - ',
                     escapeQuotes(params.quoteTokenSymbol),

@@ -4,7 +4,7 @@ pragma abicoder v2;
 
 import '@pancakeswap/v3-core/contracts/libraries/SafeCast.sol';
 import '@pancakeswap/v3-core/contracts/libraries/TickMath.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+import '@pancakeswap/v3-core/contracts/interfaces/IPancakeV3Pool.sol';
 
 import './interfaces/ISwapRouter.sol';
 import './base/PeripheryImmutableState.sol';
@@ -17,8 +17,8 @@ import './libraries/PoolAddress.sol';
 import './libraries/CallbackValidation.sol';
 import './interfaces/external/IWETH9.sol';
 
-/// @title Voltage V3 Swap Router
-/// @notice Router for stateless execution of swaps against Voltage V3
+/// @title Pancake V3 Swap Router
+/// @notice Router for stateless execution of swaps against Pancake V3
 contract SwapRouter is
     ISwapRouter,
     PeripheryImmutableState,
@@ -44,8 +44,8 @@ contract SwapRouter is
         address tokenA,
         address tokenB,
         uint24 fee
-    ) private view returns (IVoltageV3Pool) {
-        return IVoltageV3Pool(PoolAddress.computeAddress(deployer, PoolAddress.getPoolKey(tokenA, tokenB, fee)));
+    ) private view returns (IPancakeV3Pool) {
+        return IPancakeV3Pool(PoolAddress.computeAddress(deployer, PoolAddress.getPoolKey(tokenA, tokenB, fee)));
     }
 
     struct SwapCallbackData {
@@ -53,8 +53,8 @@ contract SwapRouter is
         address payer;
     }
 
-    /// @inheritdoc IVoltageV3SwapCallback
-    function VoltageV3SwapCallback(
+    /// @inheritdoc IPancakeV3SwapCallback
+    function pancakeV3SwapCallback(
         int256 amount0Delta,
         int256 amount1Delta,
         bytes calldata _data

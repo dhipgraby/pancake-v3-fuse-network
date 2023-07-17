@@ -1,8 +1,6 @@
-/* eslint-disable camelcase */
 import { verifyContract } from "@pancakeswap/common/verify";
 import { sleep } from "@pancakeswap/common/sleep";
 import { configs } from "@pancakeswap/common/config";
-import { network } from "hardhat";
 
 async function main() {
   const networkName = network.name;

@@ -1,6 +1,6 @@
 # Solidity API
 
-## IVoltageV3PoolEvents
+## IPancakeV3PoolEvents
 
 Contains all events emitted by the pool
 

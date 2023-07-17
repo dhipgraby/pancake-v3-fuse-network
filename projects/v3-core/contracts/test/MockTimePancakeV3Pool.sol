@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity =0.7.6;
 
-import '../VoltageV3Pool.sol';
+import '../PancakeV3Pool.sol';
 
 // used for testing time dependent behavior
-contract MockTimeVoltageV3Pool is VoltageV3Pool {
+contract MockTimePancakeV3Pool is PancakeV3Pool {
     // Monday, October 5, 2020 9:00:00 AM GMT-05:00
     uint256 public time = 1601906400;
 

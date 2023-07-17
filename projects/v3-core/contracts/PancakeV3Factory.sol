@@ -1,23 +1,23 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity =0.7.6;
 
-import './interfaces/IVoltageV3Factory.sol';
-import "./interfaces/IVoltageV3PoolDeployer.sol";
-import './interfaces/IVoltageV3Pool.sol';
+import './interfaces/IPancakeV3Factory.sol';
+import "./interfaces/IPancakeV3PoolDeployer.sol";
+import './interfaces/IPancakeV3Pool.sol';
 
-/// @title Canonical VoltageSwap V3 factory
-/// @notice Deploys VoltageSwap V3 pools and manages ownership and control over pool protocol fees
-contract VoltageV3Factory is IVoltageV3Factory {
-    /// @inheritdoc IVoltageV3Factory
+/// @title Canonical PancakeSwap V3 factory
+/// @notice Deploys PancakeSwap V3 pools and manages ownership and control over pool protocol fees
+contract PancakeV3Factory is IPancakeV3Factory {
+    /// @inheritdoc IPancakeV3Factory
     address public override owner;
 
     address public immutable poolDeployer;
 
-    /// @inheritdoc IVoltageV3Factory
+    /// @inheritdoc IPancakeV3Factory
     mapping(uint24 => int24) public override feeAmountTickSpacing;
-    /// @inheritdoc IVoltageV3Factory
+    /// @inheritdoc IPancakeV3Factory
     mapping(address => mapping(address => mapping(uint24 => address))) public override getPool;
-    /// @inheritdoc IVoltageV3Factory
+    /// @inheritdoc IPancakeV3Factory
     mapping(uint24 => TickSpacingExtraInfo) public override feeAmountTickSpacingExtraInfo;
     mapping(address => bool) private _whiteListAddresses;
 
@@ -56,7 +56,7 @@ contract VoltageV3Factory is IVoltageV3Factory {
         emit FeeAmountExtraInfoUpdated(10000, false, true);
     }
 
-    /// @inheritdoc IVoltageV3Factory
+    /// @inheritdoc IPancakeV3Factory
     function createPool(
         address tokenA,
         address tokenB,
@@ -72,20 +72,20 @@ contract VoltageV3Factory is IVoltageV3Factory {
             require(_whiteListAddresses[msg.sender], "user should be in the white list for this fee tier");
         }
         require(getPool[token0][token1][fee] == address(0));
-        pool = IVoltageV3PoolDeployer(poolDeployer).deploy(address(this), token0, token1, fee, tickSpacing);
+        pool = IPancakeV3PoolDeployer(poolDeployer).deploy(address(this), token0, token1, fee, tickSpacing);
         getPool[token0][token1][fee] = pool;
         // populate mapping in the reverse direction, deliberate choice to avoid the cost of comparing addresses
         getPool[token1][token0][fee] = pool;
         emit PoolCreated(token0, token1, fee, tickSpacing, pool);
     }
 
-    /// @inheritdoc IVoltageV3Factory
+    /// @inheritdoc IPancakeV3Factory
     function setOwner(address _owner) external override onlyOwner {
         emit OwnerChanged(owner, _owner);
         owner = _owner;
     }
 
-    /// @inheritdoc IVoltageV3Factory
+    /// @inheritdoc IPancakeV3Factory
     function enableFeeAmount(uint24 fee, int24 tickSpacing) public override onlyOwner {
         require(fee < 1000000);
         // tick spacing is capped at 16384 to prevent the situation where tickSpacing is so large that
@@ -100,7 +100,7 @@ contract VoltageV3Factory is IVoltageV3Factory {
         emit FeeAmountExtraInfoUpdated(fee, false, true);
     }
 
-    /// @inheritdoc IVoltageV3Factory
+    /// @inheritdoc IPancakeV3Factory
     function setWhiteListAddress(address user, bool verified) public override onlyOwner {
         require(_whiteListAddresses[user] != verified, "state not change");
         _whiteListAddresses[user] = verified;
@@ -108,7 +108,7 @@ contract VoltageV3Factory is IVoltageV3Factory {
         emit WhiteListAdded(user, verified);
     }
 
-    /// @inheritdoc IVoltageV3Factory
+    /// @inheritdoc IPancakeV3Factory
     function setFeeAmountExtraInfo(
         uint24 fee,
         bool whitelistRequested,
@@ -129,7 +129,7 @@ contract VoltageV3Factory is IVoltageV3Factory {
     }
 
     function setFeeProtocol(address pool, uint32 feeProtocol0, uint32 feeProtocol1) external override onlyOwner {
-        IVoltageV3Pool(pool).setFeeProtocol(feeProtocol0, feeProtocol1);
+        IPancakeV3Pool(pool).setFeeProtocol(feeProtocol0, feeProtocol1);
     }
 
     function collectProtocol(
@@ -138,10 +138,10 @@ contract VoltageV3Factory is IVoltageV3Factory {
         uint128 amount0Requested,
         uint128 amount1Requested
     ) external override onlyOwner returns (uint128 amount0, uint128 amount1) {
-        return IVoltageV3Pool(pool).collectProtocol(recipient, amount0Requested, amount1Requested);
+        return IPancakeV3Pool(pool).collectProtocol(recipient, amount0Requested, amount1Requested);
     }
 
     function setLmPool(address pool, address lmPool) external override onlyOwnerOrLmPoolDeployer {
-        IVoltageV3Pool(pool).setLmPool(lmPool);
+        IPancakeV3Pool(pool).setLmPool(lmPool);
     }
 }

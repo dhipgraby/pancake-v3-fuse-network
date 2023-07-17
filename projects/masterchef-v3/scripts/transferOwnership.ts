@@ -80,7 +80,7 @@ const abi = [
   },
   {
     inputs: [],
-    name: "NotVoltageNFT",
+    name: "NotPancakeNFT",
     type: "error",
   },
   {

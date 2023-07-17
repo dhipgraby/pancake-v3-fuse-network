@@ -12,7 +12,7 @@ import './StableSwapRouter.sol';
 import './base/ApproveAndCall.sol';
 import './base/MulticallExtended.sol';
 
-/// @title Voltage Smart Router
+/// @title Pancake Smart Router
 contract SmartRouter is ISmartRouter, V2SwapRouter, V3SwapRouter, StableSwapRouter, ApproveAndCall, MulticallExtended, SelfPermit {
     constructor(
         address _factoryV2,
