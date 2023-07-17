@@ -3,13 +3,13 @@ import { ethers, upgrades } from "hardhat";
 import { time, mineUpTo, reset } from "@nomicfoundation/hardhat-network-helpers";
 import { TickMath } from "@uniswap/v3-sdk";
 
-import PancakeV3PoolDeployerArtifact from "@pancakeswap/v3-core/artifacts/contracts/PancakeV3PoolDeployer.sol/PancakeV3PoolDeployer.json";
-import PancakeV3FactoryArtifact from "@pancakeswap/v3-core/artifacts/contracts/PancakeV3Factory.sol/PancakeV3Factory.json";
-// import PancakeV3FactoryOwnerArtifact from "@pancakeswap/v3-core/artifacts/contracts/PancakeV3FactoryOwner.sol/PancakeV3FactoryOwner.json";
-import PancakeV3SwapRouterArtifact from "@pancakeswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json";
+import VoltageV3PoolDeployerArtifact from "@pancakeswap/v3-core/artifacts/contracts/VoltageV3PoolDeployer.sol/VoltageV3PoolDeployer.json";
+import VoltageV3FactoryArtifact from "@pancakeswap/v3-core/artifacts/contracts/VoltageV3Factory.sol/VoltageV3Factory.json";
+// import VoltageV3FactoryOwnerArtifact from "@pancakeswap/v3-core/artifacts/contracts/VoltageV3FactoryOwner.sol/VoltageV3FactoryOwner.json";
+import VoltageV3SwapRouterArtifact from "@pancakeswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json";
 import NftDescriptorOffchainArtifact from "@pancakeswap/v3-periphery/artifacts/contracts/NonfungibleTokenPositionDescriptorOffChain.sol/NonfungibleTokenPositionDescriptorOffChain.json";
 import NonfungiblePositionManagerArtifact from "@pancakeswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json";
-import PancakeV3LmPoolDeployerArtifact from "@pancakeswap/v3-lm-pool/artifacts/contracts/PancakeV3LmPoolDeployer.sol/PancakeV3LmPoolDeployer.json";
+import VoltageV3LmPoolDeployerArtifact from "@pancakeswap/v3-lm-pool/artifacts/contracts/VoltageV3LmPoolDeployer.sol/VoltageV3LmPoolDeployer.json";
 import TestLiquidityAmountsArtifact from "@pancakeswap/v3-periphery/artifacts/contracts/test/LiquidityAmountsTest.sol/LiquidityAmountsTest.json";
 
 import ERC20MockArtifact from "./ERC20Mock.json";
@@ -35,16 +35,16 @@ describe("MasterChefV3", function () {
     reset();
 
     // Deploy factory
-    const PancakeV3PoolDeployer = await ethers.getContractFactoryFromArtifact(PancakeV3PoolDeployerArtifact);
-    const pancakeV3PoolDeployer = await PancakeV3PoolDeployer.deploy();
+    const VoltageV3PoolDeployer = await ethers.getContractFactoryFromArtifact(VoltageV3PoolDeployerArtifact);
+    const pancakeV3PoolDeployer = await VoltageV3PoolDeployer.deploy();
 
-    const PancakeV3Factory = await ethers.getContractFactoryFromArtifact(PancakeV3FactoryArtifact);
-    const pancakeV3Factory = await PancakeV3Factory.deploy(pancakeV3PoolDeployer.address);
+    const VoltageV3Factory = await ethers.getContractFactoryFromArtifact(VoltageV3FactoryArtifact);
+    const pancakeV3Factory = await VoltageV3Factory.deploy(pancakeV3PoolDeployer.address);
 
     await pancakeV3PoolDeployer.setFactoryAddress(pancakeV3Factory.address);
 
-    const PancakeV3SwapRouter = await ethers.getContractFactoryFromArtifact(PancakeV3SwapRouterArtifact);
-    const pancakeV3SwapRouter = await PancakeV3SwapRouter.deploy(
+    const VoltageV3SwapRouter = await ethers.getContractFactoryFromArtifact(VoltageV3SwapRouterArtifact);
+    const pancakeV3SwapRouter = await VoltageV3SwapRouter.deploy(
       pancakeV3PoolDeployer.address,
       pancakeV3Factory.address,
       WETH9Address
@@ -60,7 +60,7 @@ describe("MasterChefV3", function () {
     // ]);
     // await nonfungibleTokenPositionDescriptor.deployed();
     // TODO:
-    await PancakeV3SwapRouter.deploy(pancakeV3PoolDeployer.address, pancakeV3Factory.address, WETH9Address);
+    await VoltageV3SwapRouter.deploy(pancakeV3PoolDeployer.address, pancakeV3Factory.address, WETH9Address);
 
     // Deploy NFT position manager
     const NonfungiblePositionManager = await ethers.getContractFactoryFromArtifact(NonfungiblePositionManagerArtifact);
@@ -75,8 +75,8 @@ describe("MasterChefV3", function () {
     const ERC20Mock = await ethers.getContractFactoryFromArtifact(ERC20MockArtifact);
 
     // Deploy factory owner contract
-    // const PancakeV3FactoryOwner = await ethers.getContractFactoryFromArtifact(PancakeV3FactoryOwnerArtifact);
-    // const pancakeV3FactoryOwner = await PancakeV3FactoryOwner.deploy(pancakeV3Factory.address);
+    // const VoltageV3FactoryOwner = await ethers.getContractFactoryFromArtifact(VoltageV3FactoryOwnerArtifact);
+    // const pancakeV3FactoryOwner = await VoltageV3FactoryOwner.deploy(pancakeV3Factory.address);
     // await pancakeV3Factory.setOwner(pancakeV3FactoryOwner.address);
 
     // Prepare for master chef v3
@@ -129,8 +129,8 @@ describe("MasterChefV3", function () {
     await masterChefV2.deposit(1, await dummyTokenV3.balanceOf(admin.address));
     const firstFarmingBlock = await time.latestBlock();
 
-    const PancakeV3LmPoolDeployer = await ethers.getContractFactoryFromArtifact(PancakeV3LmPoolDeployerArtifact);
-    const pancakeV3LmPoolDeployer = await PancakeV3LmPoolDeployer.deploy(
+    const VoltageV3LmPoolDeployer = await ethers.getContractFactoryFromArtifact(VoltageV3LmPoolDeployerArtifact);
+    const pancakeV3LmPoolDeployer = await VoltageV3LmPoolDeployer.deploy(
       masterChefV3.address
       // pancakeV3FactoryOwner.address
     );

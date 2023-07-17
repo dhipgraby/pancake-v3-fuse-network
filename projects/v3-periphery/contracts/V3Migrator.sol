@@ -16,7 +16,7 @@ import './base/SelfPermit.sol';
 import './interfaces/external/IWETH9.sol';
 import './base/PoolInitializer.sol';
 
-/// @title Pancakeswap Migrator
+/// @title Voltageswap Migrator
 contract V3Migrator is IV3Migrator, PeripheryImmutableState, PoolInitializer, Multicall, SelfPermit {
     using LowGasSafeMath for uint256;
 

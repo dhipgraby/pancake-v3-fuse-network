@@ -6,13 +6,13 @@ import '../interfaces/IERC20Minimal.sol';
 import '../libraries/SafeCast.sol';
 import '../libraries/TickMath.sol';
 
-import '../interfaces/callback/IPancakeV3MintCallback.sol';
-import '../interfaces/callback/IPancakeV3SwapCallback.sol';
-import '../interfaces/callback/IPancakeV3FlashCallback.sol';
+import '../interfaces/callback/IVoltageV3MintCallback.sol';
+import '../interfaces/callback/IVoltageV3SwapCallback.sol';
+import '../interfaces/callback/IVoltageV3FlashCallback.sol';
 
-import '../interfaces/IPancakeV3Pool.sol';
+import '../interfaces/IVoltageV3Pool.sol';
 
-contract TestPancakeV3Callee is IPancakeV3MintCallback, IPancakeV3SwapCallback, IPancakeV3FlashCallback {
+contract TestVoltageV3Callee is IVoltageV3MintCallback, IVoltageV3SwapCallback, IVoltageV3FlashCallback {
     using SafeCast for uint256;
 
     function swapExact0For1(
@@ -21,7 +21,7 @@ contract TestPancakeV3Callee is IPancakeV3MintCallback, IPancakeV3SwapCallback, 
         address recipient,
         uint160 sqrtPriceLimitX96
     ) external {
-        IPancakeV3Pool(pool).swap(recipient, true, amount0In.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
+        IVoltageV3Pool(pool).swap(recipient, true, amount0In.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
     }
 
     function swap0ForExact1(
@@ -30,7 +30,7 @@ contract TestPancakeV3Callee is IPancakeV3MintCallback, IPancakeV3SwapCallback, 
         address recipient,
         uint160 sqrtPriceLimitX96
     ) external {
-        IPancakeV3Pool(pool).swap(recipient, true, -amount1Out.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
+        IVoltageV3Pool(pool).swap(recipient, true, -amount1Out.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
     }
 
     function swapExact1For0(
@@ -39,7 +39,7 @@ contract TestPancakeV3Callee is IPancakeV3MintCallback, IPancakeV3SwapCallback, 
         address recipient,
         uint160 sqrtPriceLimitX96
     ) external {
-        IPancakeV3Pool(pool).swap(recipient, false, amount1In.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
+        IVoltageV3Pool(pool).swap(recipient, false, amount1In.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
     }
 
     function swap1ForExact0(
@@ -48,7 +48,7 @@ contract TestPancakeV3Callee is IPancakeV3MintCallback, IPancakeV3SwapCallback, 
         address recipient,
         uint160 sqrtPriceLimitX96
     ) external {
-        IPancakeV3Pool(pool).swap(recipient, false, -amount0Out.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
+        IVoltageV3Pool(pool).swap(recipient, false, -amount0Out.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
     }
 
     function swapToLowerSqrtPrice(
@@ -56,7 +56,7 @@ contract TestPancakeV3Callee is IPancakeV3MintCallback, IPancakeV3SwapCallback, 
         uint160 sqrtPriceX96,
         address recipient
     ) external {
-        IPancakeV3Pool(pool).swap(recipient, true, type(int256).max, sqrtPriceX96, abi.encode(msg.sender));
+        IVoltageV3Pool(pool).swap(recipient, true, type(int256).max, sqrtPriceX96, abi.encode(msg.sender));
     }
 
     function swapToHigherSqrtPrice(
@@ -64,7 +64,7 @@ contract TestPancakeV3Callee is IPancakeV3MintCallback, IPancakeV3SwapCallback, 
         uint160 sqrtPriceX96,
         address recipient
     ) external {
-        IPancakeV3Pool(pool).swap(recipient, false, type(int256).max, sqrtPriceX96, abi.encode(msg.sender));
+        IVoltageV3Pool(pool).swap(recipient, false, type(int256).max, sqrtPriceX96, abi.encode(msg.sender));
     }
 
     event SwapCallback(int256 amount0Delta, int256 amount1Delta);
@@ -79,9 +79,9 @@ contract TestPancakeV3Callee is IPancakeV3MintCallback, IPancakeV3SwapCallback, 
         emit SwapCallback(amount0Delta, amount1Delta);
 
         if (amount0Delta > 0) {
-            IERC20Minimal(IPancakeV3Pool(msg.sender).token0()).transferFrom(sender, msg.sender, uint256(amount0Delta));
+            IERC20Minimal(IVoltageV3Pool(msg.sender).token0()).transferFrom(sender, msg.sender, uint256(amount0Delta));
         } else if (amount1Delta > 0) {
-            IERC20Minimal(IPancakeV3Pool(msg.sender).token1()).transferFrom(sender, msg.sender, uint256(amount1Delta));
+            IERC20Minimal(IVoltageV3Pool(msg.sender).token1()).transferFrom(sender, msg.sender, uint256(amount1Delta));
         } else {
             // if both are not gt 0, both must be 0.
             assert(amount0Delta == 0 && amount1Delta == 0);
@@ -95,7 +95,7 @@ contract TestPancakeV3Callee is IPancakeV3MintCallback, IPancakeV3SwapCallback, 
         int24 tickUpper,
         uint128 amount
     ) external {
-        IPancakeV3Pool(pool).mint(recipient, tickLower, tickUpper, amount, abi.encode(msg.sender));
+        IVoltageV3Pool(pool).mint(recipient, tickLower, tickUpper, amount, abi.encode(msg.sender));
     }
 
     event MintCallback(uint256 amount0Owed, uint256 amount1Owed);
@@ -109,9 +109,9 @@ contract TestPancakeV3Callee is IPancakeV3MintCallback, IPancakeV3SwapCallback, 
 
         emit MintCallback(amount0Owed, amount1Owed);
         if (amount0Owed > 0)
-            IERC20Minimal(IPancakeV3Pool(msg.sender).token0()).transferFrom(sender, msg.sender, amount0Owed);
+            IERC20Minimal(IVoltageV3Pool(msg.sender).token0()).transferFrom(sender, msg.sender, amount0Owed);
         if (amount1Owed > 0)
-            IERC20Minimal(IPancakeV3Pool(msg.sender).token1()).transferFrom(sender, msg.sender, amount1Owed);
+            IERC20Minimal(IVoltageV3Pool(msg.sender).token1()).transferFrom(sender, msg.sender, amount1Owed);
     }
 
     event FlashCallback(uint256 fee0, uint256 fee1);
@@ -124,7 +124,7 @@ contract TestPancakeV3Callee is IPancakeV3MintCallback, IPancakeV3SwapCallback, 
         uint256 pay0,
         uint256 pay1
     ) external {
-        IPancakeV3Pool(pool).flash(recipient, amount0, amount1, abi.encode(msg.sender, pay0, pay1));
+        IVoltageV3Pool(pool).flash(recipient, amount0, amount1, abi.encode(msg.sender, pay0, pay1));
     }
 
     function pancakeV3FlashCallback(
@@ -136,7 +136,7 @@ contract TestPancakeV3Callee is IPancakeV3MintCallback, IPancakeV3SwapCallback, 
 
         (address sender, uint256 pay0, uint256 pay1) = abi.decode(data, (address, uint256, uint256));
 
-        if (pay0 > 0) IERC20Minimal(IPancakeV3Pool(msg.sender).token0()).transferFrom(sender, msg.sender, pay0);
-        if (pay1 > 0) IERC20Minimal(IPancakeV3Pool(msg.sender).token1()).transferFrom(sender, msg.sender, pay1);
+        if (pay0 > 0) IERC20Minimal(IVoltageV3Pool(msg.sender).token0()).transferFrom(sender, msg.sender, pay0);
+        if (pay1 > 0) IERC20Minimal(IVoltageV3Pool(msg.sender).token1()).transferFrom(sender, msg.sender, pay1);
     }
 }
