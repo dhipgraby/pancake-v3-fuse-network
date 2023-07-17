@@ -5,10 +5,10 @@ import {
   MockTimeNonfungiblePositionManager,
   MockTimeSwapRouter,
   PairFlash,
-  IPancakeV3Pool,
+  IVoltageV3Pool,
   TestERC20,
   TestERC20Metadata,
-  IPancakeV3Factory,
+  IVoltageV3Factory,
   NFTDescriptor,
   Quoter,
   SwapRouter,
@@ -31,7 +31,7 @@ describe('PairFlash test', () => {
   let nft: MockTimeNonfungiblePositionManager
   let token0: TestERC20
   let token1: TestERC20
-  let factory: IPancakeV3Factory
+  let factory: IVoltageV3Factory
   let deployer: Contract
   let quoter: Quoter
 
