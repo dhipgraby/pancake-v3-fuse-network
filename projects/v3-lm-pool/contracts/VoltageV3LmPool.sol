@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity =0.7.6;
 
-import '@pancakeswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
-import '@pancakeswap/v3-core/contracts/libraries/SafeCast.sol';
-import '@pancakeswap/v3-core/contracts/libraries/FullMath.sol';
-import '@pancakeswap/v3-core/contracts/libraries/FixedPoint128.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+import '@voltageswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
+import '@voltageswap/v3-core/contracts/libraries/SafeCast.sol';
+import '@voltageswap/v3-core/contracts/libraries/FullMath.sol';
+import '@voltageswap/v3-core/contracts/libraries/FixedPoint128.sol';
+import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
 
 import './libraries/LmTick.sol';
 

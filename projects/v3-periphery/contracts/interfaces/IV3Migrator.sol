@@ -7,10 +7,10 @@ import './ISelfPermit.sol';
 import './IPoolInitializer.sol';
 
 /// @title V3 Migrator
-/// @notice Enables migration of liqudity from PancakeSwap v2-compatible pairs into PancakeSwap v3 pools
+/// @notice Enables migration of liqudity from VoltageSwap v2-compatible pairs into VoltageSwap v3 pools
 interface IV3Migrator is IMulticall, ISelfPermit, IPoolInitializer {
     struct MigrateParams {
-        address pair; // the PancakeSwap v2-compatible pair
+        address pair; // the VoltageSwap v2-compatible pair
         uint256 liquidityToMigrate; // expected to be balanceOf(msg.sender)
         uint8 percentageToMigrate; // represented as a numerator over 100
         address token0;

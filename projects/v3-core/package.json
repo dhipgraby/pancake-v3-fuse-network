@@ -1,5 +1,5 @@
 {
-  "name": "@pancakeswap/v3-core",
+  "name": "@voltageswap/v3-core",
   "description": "🥞 Core smart contracts of VoltageSwap V3",
   "license": "GPL-2.0-or-later",
   "publishConfig": {
@@ -7,7 +7,7 @@
   },
   "version": "1.0.2",
   "keywords": [
-    "Voltageswap",
+    "voltageswap",
     "core",
     "v3"
   ],
@@ -23,8 +23,8 @@
     "node": ">=10"
   },
   "devDependencies": {
-    "@Voltageswap/common": "*",
-    "@Voltageswap/v3-lm-pool": "*",
+    "@voltageswap/common": "*",
+    "@voltageswap/v3-lm-pool": "*",
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-etherscan": "^2.1.8",
     "@nomiclabs/hardhat-waffle": "^2.0.1",

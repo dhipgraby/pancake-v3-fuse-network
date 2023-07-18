@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { ethers, run, network } from "hardhat";
-import { configs } from "@pancakeswap/common/config";
-import { tryVerify } from "@pancakeswap/common/verify";
+import { configs } from "@voltageswap/common/config";
+import { tryVerify } from "@voltageswap/common/verify";
 import { writeFileSync } from "fs";
 
 async function main() {
@@ -19,7 +19,7 @@ async function main() {
     throw new Error(`No config found for network ${networkName}`);
   }
 
-  const v3PeripheryDeployedContracts = await import(`@pancakeswap/v3-periphery/deployments/${networkName}.json`);
+  const v3PeripheryDeployedContracts = await import(`@voltageswap/v3-periphery/deployments/${networkName}.json`);
   const positionManager_address = v3PeripheryDeployedContracts.NonfungiblePositionManager;
 
   const MasterChefV3 = await ethers.getContractFactory("MasterChefV3");

@@ -2,9 +2,9 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Factory.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/callback/IVoltageV3MintCallback.sol';
-import '@pancakeswap/v3-core/contracts/libraries/TickMath.sol';
+import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Factory.sol';
+import '@voltageswap/v3-core/contracts/interfaces/callback/IVoltageV3MintCallback.sol';
+import '@voltageswap/v3-core/contracts/libraries/TickMath.sol';
 
 import '../libraries/PoolAddress.sol';
 import '../libraries/CallbackValidation.sol';
@@ -22,7 +22,7 @@ abstract contract LiquidityManagement is IVoltageV3MintCallback, PeripheryImmuta
     }
 
     /// @inheritdoc IVoltageV3MintCallback
-    function pancakeV3MintCallback(
+    function voltageV3MintCallback(
         uint256 amount0Owed,
         uint256 amount1Owed,
         bytes calldata data

@@ -710,10 +710,10 @@ error NotOwnerOrOperator()
 error NoBalance()
 ```
 
-### NotPancakeNFT
+### NotNFT
 
 ```solidity
-error NotPancakeNFT()
+error NotNFT()
 ```
 
 ### InvalidNFT

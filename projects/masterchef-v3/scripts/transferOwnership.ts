@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
 import { ethers, run, network } from "hardhat";
 import { Contract } from "ethers";
-import { configs } from "@pancakeswap/common/config";
-import { tryVerify } from "@pancakeswap/common/verify";
+import { configs } from "@voltageswap/common/config";
+import { tryVerify } from "@voltageswap/common/verify";
 import { writeFileSync } from "fs";
 
 const abi = [
@@ -80,7 +80,7 @@ const abi = [
   },
   {
     inputs: [],
-    name: "NotPancakeNFT",
+    name: "NotVoltageNFT",
     type: "error",
   },
   {

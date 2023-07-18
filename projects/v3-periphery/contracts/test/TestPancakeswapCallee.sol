@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity =0.7.6;
 
-import '@pancakeswap/v3-core/contracts/interfaces/callback/IVoltageV3SwapCallback.sol';
-import '@pancakeswap/v3-core/contracts/libraries/SafeCast.sol';
-import '@pancakeswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
+import '@voltageswap/v3-core/contracts/interfaces/callback/IVoltageV3SwapCallback.sol';
+import '@voltageswap/v3-core/contracts/libraries/SafeCast.sol';
+import '@voltageswap/v3-core/contracts/interfaces/IVoltageV3Pool.sol';
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 
 contract TestVoltageswapCallee is IVoltageV3SwapCallback {
@@ -45,7 +45,7 @@ contract TestVoltageswapCallee is IVoltageV3SwapCallback {
         IVoltageV3Pool(pool).swap(recipient, false, -amount0Out.toInt256(), sqrtPriceLimitX96, abi.encode(msg.sender));
     }
 
-    function pancakeV3SwapCallback(
+    function voltageV3SwapCallback(
         int256 amount0Delta,
         int256 amount1Delta,
         bytes calldata data

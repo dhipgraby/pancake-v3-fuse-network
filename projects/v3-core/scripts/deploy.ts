@@ -1,5 +1,5 @@
-import { tryVerify } from '@pancakeswap/common/verify'
-import { ContractFactory } from 'ethers'
+import { tryVerify } from '@voltageswap/common/verify'
+import { Contract, Contract, ContractFactory } from 'ethers'
 import { ethers, network } from 'hardhat'
 import fs from 'fs'
 
@@ -16,49 +16,49 @@ async function main() {
   const networkName = network.name
   console.log('owner', owner.address)
 
-  let pancakeV3PoolDeployer_address = ''
-  let pancakeV3PoolDeployer
+  let voltageV3PoolDeployer_address = ''
+  let voltageV3PoolDeployer: Contract
   const VoltageV3PoolDeployer = new ContractFactory(
     artifacts.VoltageV3PoolDeployer.abi,
     artifacts.VoltageV3PoolDeployer.bytecode,
     owner
   )
-  if (!pancakeV3PoolDeployer_address) {
-    pancakeV3PoolDeployer = await VoltageV3PoolDeployer.deploy()
+  if (!voltageV3PoolDeployer_address) {
+    voltageV3PoolDeployer = await VoltageV3PoolDeployer.deploy()
 
-    pancakeV3PoolDeployer_address = pancakeV3PoolDeployer.address
-    console.log('pancakeV3PoolDeployer', pancakeV3PoolDeployer_address)
+    voltageV3PoolDeployer_address = voltageV3PoolDeployer.address
+    console.log('voltageV3PoolDeployer', voltageV3PoolDeployer_address)
   } else {
-    pancakeV3PoolDeployer = new ethers.Contract(
-      pancakeV3PoolDeployer_address,
+    voltageV3PoolDeployer = new ethers.Contract(
+      voltageV3PoolDeployer_address,
       artifacts.VoltageV3PoolDeployer.abi,
       owner
     )
   }
 
-  let pancakeV3Factory_address = ''
-  let pancakeV3Factory
-  if (!pancakeV3Factory_address) {
+  let voltageV3Factory_address = ''
+  let voltageV3Factory: Contract
+  if (!voltageV3Factory_address) {
     const VoltageV3Factory = new ContractFactory(
       artifacts.VoltageV3Factory.abi,
       artifacts.VoltageV3Factory.bytecode,
       owner
     )
-    pancakeV3Factory = await VoltageV3Factory.deploy(pancakeV3PoolDeployer_address)
+    voltageV3Factory = await VoltageV3Factory.deploy(voltageV3PoolDeployer_address)
 
-    pancakeV3Factory_address = pancakeV3Factory.address
-    console.log('pancakeV3Factory', pancakeV3Factory_address)
+    voltageV3Factory_address = voltageV3Factory.address
+    console.log('voltageV3Factory', voltageV3Factory_address)
   } else {
-    pancakeV3Factory = new ethers.Contract(pancakeV3Factory_address, artifacts.VoltageV3Factory.abi, owner)
+    voltageV3Factory = new ethers.Contract(voltageV3Factory_address, artifacts.VoltageV3Factory.abi, owner)
   }
 
-  // Set FactoryAddress for pancakeV3PoolDeployer.
-  await pancakeV3PoolDeployer.setFactoryAddress(pancakeV3Factory_address);
+  // Set FactoryAddress for voltageV3PoolDeployer.
+  await voltageV3PoolDeployer.setFactoryAddress(voltageV3Factory_address);
 
 
   const contracts = {
-    VoltageV3Factory: pancakeV3Factory_address,
-    VoltageV3PoolDeployer: pancakeV3PoolDeployer_address,
+    VoltageV3Factory: voltageV3Factory_address,
+    VoltageV3PoolDeployer: voltageV3PoolDeployer_address,
   }
 
   fs.writeFileSync(`./deployments/${networkName}.json`, JSON.stringify(contracts, null, 2))

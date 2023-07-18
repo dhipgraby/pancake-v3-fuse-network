@@ -12,7 +12,7 @@ interface IPeripheryPayments {
 
     /// @notice Refunds any ETH balance held by this contract to the `msg.sender`
     /// @dev Useful for bundling with mint or increase liquidity that uses ether, or exact output swaps
-    /// that use ether for the input amount. And in PancakeSwap Router, this would be called 
+    /// that use ether for the input amount. And in VoltageSwap Router, this would be called 
     /// at the very end of swap
     function refundETH() external payable;
 

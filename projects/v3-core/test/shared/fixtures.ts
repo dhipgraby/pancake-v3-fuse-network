@@ -7,7 +7,7 @@ import { VoltageV3PoolDeployer } from '../../typechain-types/contracts/VoltageV3
 import { TestVoltageV3Callee } from '../../typechain-types/contracts/test/TestVoltageV3Callee'
 import { TestVoltageV3Router } from '../../typechain-types/contracts/test/TestVoltageV3Router'
 import { MockTimeVoltageV3PoolDeployer } from '../../typechain-types/contracts/test/MockTimeVoltageV3PoolDeployer'
-import VoltageV3LmPoolArtifact from '@pancakeswap/v3-lm-pool/artifacts/contracts/VoltageV3LmPool.sol/VoltageV3LmPool.json'
+import VoltageV3LmPoolArtifact from '@voltageswap/v3-lm-pool/artifacts/contracts/VoltageV3LmPool.sol/VoltageV3LmPool.json'
 
 import { Fixture } from 'ethereum-waffle'
 

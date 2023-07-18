@@ -109,7 +109,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     error ZeroAddress();
     error NotOwnerOrOperator();
     error NoBalance();
-    error NotPancakeNFT();
+    error NotNFT();
     error InvalidNFT();
     error NotOwner();
     error NoLiquidity();
@@ -333,7 +333,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
         uint256 _tokenId,
         bytes calldata
     ) external nonReentrant returns (bytes4) {
-        if (msg.sender != address(nonfungiblePositionManager)) revert NotPancakeNFT();
+        if (msg.sender != address(nonfungiblePositionManager)) revert NotNFT();
         DepositCache memory cache;
         (
             ,
